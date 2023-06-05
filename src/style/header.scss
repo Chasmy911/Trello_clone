@@ -1,0 +1,20 @@
+.header {
+    border-radius: 20px;
+    background-color: rgba($color: #aba0a0, $alpha: .9);
+    max-width: 1220px;
+    margin: 25px auto;
+}
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto;
+   
+}
+
+.header__logo img {
+    width: 15%;
+}

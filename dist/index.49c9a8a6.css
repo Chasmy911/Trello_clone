@@ -1,0 +1,60 @@
+@import "https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap";
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  font-family: Geologica, sans-serif;
+  list-style-type: none;
+  transition: all .3s;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.wrapper {
+  height: 100vh;
+  background: url("main_phone.ef618da7.jpg") center / cover no-repeat;
+  padding: 20px;
+}
+
+.header {
+  max-width: 1220px;
+  background-color: #aba0a0e6;
+  border-radius: 20px;
+  margin: 25px auto;
+}
+
+.header__wrapper {
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+}
+
+.header__logo img {
+  width: 15%;
+}
+
+.footer {
+  max-width: 1220px;
+  background-color: #aba0a0e6;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 25px auto;
+  padding: 20px;
+  display: flex;
+}
+
+
+
+/*# sourceMappingURL=index.49c9a8a6.css.map */
