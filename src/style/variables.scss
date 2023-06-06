@@ -1,0 +1,29 @@
+$font: 'Geologica', sans-serif;
+$headerbackground: #989898;
+$todocolor: #bdeac8;
+$progresscolor: #e0e4e1;
+$donecolor: #9deff4;
+$green:#3ec961;
+$white: #e9f2eb;
+$blue: #7a65ff;
+$transparence: .8;
+
+
+
+%block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    border-radius: 25px;
+    flex-shrink: 0;
+}
+
+%btn {
+    width: 100%;
+    height: 50px;
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 0;
+}

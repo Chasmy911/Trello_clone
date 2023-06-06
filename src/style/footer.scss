@@ -1,7 +1,8 @@
 .footer {
-    background-color: rgba($color: #aba0a0, $alpha: .9);
     max-width: 1220px;
-    margin: 25px auto;
+    background-color: $headerbackground;
+    opacity: $transparence;
+    margin: 15px auto;
     display: flex;
     justify-content: center;
     align-items: center;

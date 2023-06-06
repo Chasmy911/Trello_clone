@@ -6,7 +6,7 @@
     scroll-behavior: smooth;
     outline: none;
     transition: 0.3s;
-    font-family: 'Geologica', sans-serif;
+    font-family: $font;
 }
 
 
@@ -21,7 +21,12 @@ button {
 
 .wrapper {
     background: url(../images/main_phone.jpg) no-repeat center/cover;
-    
-    padding: 20px;
+    padding: 10px;
     height: 100vh;
+
+}
+
+.main {
+    max-width: 1220px;
+    margin: 0 auto;
 }

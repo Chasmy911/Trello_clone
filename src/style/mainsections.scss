@@ -1,0 +1,70 @@
+#main_block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    opacity: 0.8;
+    min-height: 70vh;
+    border-radius: 20px;
+}
+
+.todoBlock {
+    @extend %block;
+    background: $todocolor;
+
+}
+
+.progressBlock {
+    @extend %block;
+    background: $progresscolor;
+}
+
+.doneBlock {
+    @extend %block;
+    background: $donecolor;
+}
+
+.todoBlockHeader,
+.progressBlockHeader,
+.doneBlockHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    opacity: 1;
+}
+
+.todoBlockHeader {
+    background: $green;
+    border-radius: 20px 20px 0 0;
+
+}
+
+.progressBlockHeader {
+    background: $white;
+    border-radius: 20px 20px 0 0;
+}
+
+.doneBlockHeader {
+    background: $blue;
+    border-radius: 20px 20px 0 0;
+}
+
+.todoBlockBtn,
+.doneBlockBtn {
+    @extend %btn;
+}
+
+.todoBlockBtn:hover,
+.doneBlockBtn:hover {
+    font-size: 18px;
+}
+
+.todoBlockBtn {
+    background: $green;
+    border: 2px solid $green
+}
+
+.doneBlockBtn {
+    background: $blue;
+    border: 2px solid $blue;
+}

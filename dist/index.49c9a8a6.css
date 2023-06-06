@@ -1,4 +1,22 @@
 @import "https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap";
+.doneBlock, .progressBlock, .todoBlock {
+  width: 30%;
+  border-radius: 25px;
+  flex-direction: column;
+  flex-shrink: 0;
+  justify-content: space-between;
+  display: flex;
+}
+
+.todoBlockBtn, .doneBlockBtn {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+  margin: 0 auto;
+  padding: 5px 0;
+}
+
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -21,14 +39,19 @@ button {
 .wrapper {
   height: 100vh;
   background: url("main_phone.ef618da7.jpg") center / cover no-repeat;
-  padding: 20px;
+  padding: 10px;
+}
+
+.main {
+  max-width: 1220px;
+  margin: 0 auto;
 }
 
 .header {
-  max-width: 1220px;
-  background-color: #aba0a0e6;
+  opacity: .8;
+  background-color: #989898;
   border-radius: 20px;
-  margin: 25px auto;
+  margin: 15px auto;
 }
 
 .header__wrapper {
@@ -44,17 +67,74 @@ button {
   width: 15%;
 }
 
-.footer {
-  max-width: 1220px;
-  background-color: #aba0a0e6;
+#main_block {
+  width: 100%;
+  opacity: .8;
+  min-height: 70vh;
   border-radius: 20px;
-  justify-content: center;
-  align-items: center;
-  margin: 25px auto;
-  padding: 20px;
+  justify-content: space-between;
   display: flex;
 }
 
+.todoBlock {
+  background: #bdeac8;
+}
 
+.progressBlock {
+  background: #e0e4e1;
+}
+
+.doneBlock {
+  background: #9deff4;
+}
+
+.todoBlockHeader, .progressBlockHeader, .doneBlockHeader {
+  opacity: 1;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+  display: flex;
+}
+
+.todoBlockHeader {
+  background: #3ec961;
+  border-radius: 20px 20px 0 0;
+}
+
+.progressBlockHeader {
+  background: #e9f2eb;
+  border-radius: 20px 20px 0 0;
+}
+
+.doneBlockHeader {
+  background: #7a65ff;
+  border-radius: 20px 20px 0 0;
+}
+
+.todoBlockBtn:hover, .doneBlockBtn:hover {
+  font-size: 18px;
+}
+
+.todoBlockBtn {
+  background: #3ec961;
+  border: 2px solid #3ec961;
+}
+
+.doneBlockBtn {
+  background: #7a65ff;
+  border: 2px solid #7a65ff;
+}
+
+.footer {
+  max-width: 1220px;
+  opacity: .8;
+  background-color: #989898;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+  padding: 20px;
+  display: flex;
+}
 
 /*# sourceMappingURL=index.49c9a8a6.css.map */
