@@ -3,6 +3,7 @@ $headerbackground: #989898;
 $todocolor: #bdeac8;
 $progresscolor: #e0e4e1;
 $donecolor: #9deff4;
+$modalcolor: #76638e;
 $green:#3ec961;
 $white: #e9f2eb;
 $blue: #7a65ff;
@@ -26,4 +27,25 @@ $transparence: .8;
     text-align: center;
     margin: 0 auto;
     padding: 5px 0;
+}
+
+%modalbtn {
+    width: 30%;
+    height: 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+%modal {
+    position: absolute;
+    width: 34%;
+    padding: 25px;
+    left: calc(50% - 34%/2);
+    top: calc(50% - 34%/2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: $modalcolor;
 }

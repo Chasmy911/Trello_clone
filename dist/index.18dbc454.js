@@ -574,8 +574,15 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"1SICI":[function(require,module,exports) {
+var _headertimeJs = require("./headertime.js");
+var _helperJs = require("./helper.js");
+var _createtodoitemJs = require("./createtodoitem.js");
+var _rendertodoitemJs = require("./rendertodoitem.js");
+// header time
+(0, _headertimeJs.getTime)();
 // create main block
 const mainContainer = document.getElementById("main_block");
+const modalBlockContainer = document.getElementById("main");
 const todoBlock = document.createElement("div");
 const progressBlock = document.createElement("div");
 const doneBlock = document.createElement("div");
@@ -613,7 +620,185 @@ progressBlockHeaderTitle.innerText = "IN PROGRESS:";
 doneBlockHeaderTitle.innerText = "DONE:";
 todoBlockBtn.innerText = "ADD TODO";
 doneBlockBtn.innerText = "DELETE ALL";
+//create modal window
+const modalContainer = document.createElement("div");
+const modalBtnContainer = document.createElement("div");
+const modalTitle = document.createElement("input");
+const modalDescr = document.createElement("textarea");
+const modalUser = document.createElement("div");
+const modalCancelBtn = document.createElement("button");
+const modalAddBtn = document.createElement("button");
+modalTitle.setAttribute("placeholder", "Title");
+modalDescr.setAttribute("placeholder", "Description");
+modalBlockContainer.append(modalContainer);
+modalContainer.append(modalTitle, modalDescr, modalBtnContainer);
+modalBtnContainer.append(modalUser, modalCancelBtn, modalAddBtn);
+modalUser.innerText = "Select user";
+modalCancelBtn.innerText = "Cancel";
+modalAddBtn.innerText = "Confirm";
+modalContainer.classList.add("modalContainer");
+modalTitle.classList.add("modalTitle");
+modalDescr.classList.add("modalDescr");
+modalBtnContainer.classList.add("modalBtnContainer");
+modalCancelBtn.classList.add("modalCancelBtn");
+modalAddBtn.classList.add("modalAddBtn");
+todoBlockBtn.addEventListener("click", ()=>{
+    (0, _helperJs.showAddModal)(modalContainer);
+});
+modalCancelBtn.addEventListener("click", ()=>{
+    modalTitle.value = "";
+    modalDescr.value = "";
+    (0, _helperJs.hideAddModal)(modalContainer);
+});
+//create todo
+const todoArr = [];
+const progressArr = [];
+const doneArr = [];
+const savedTodoArr = JSON.parse(localStorage.getItem("todoArr")) || [];
+const savedProgressArr = JSON.parse(localStorage.getItem("progressArr")) || [];
+const savedDoneArr = JSON.parse(localStorage.getItem("doneArr")) || [];
+const handleTodo = ()=>{
+    const todoItem = (0, _createtodoitemJs.createTodoItem)(modalTitle.value, modalDescr.value);
+    if (modalTitle.value && modalDescr.value) {
+        modalTitle.value = "";
+        modalDescr.value = "";
+        (0, _helperJs.hideAddModal)(modalContainer);
+    }
+    if (!todoItem) return;
+    todoArr.push(todoItem);
+    console.log(todoArr);
+    (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todoItem);
+    (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+};
+modalAddBtn.addEventListener("click", handleTodo);
+document.addEventListener("DOMContentLoaded", ()=>{
+    (0, _helperJs.updatePage)(todoBlockContainer, progressBlockContainer, doneBlockContainer, todoArr, savedTodoArr, progressArr, savedProgressArr, doneArr, savedDoneArr);
+});
 
-},{}]},["gEwwu","1SICI"], "1SICI", "parcelRequire1fb0")
+},{"./headertime.js":"aJ4Uq","./helper.js":"lVRAz","./createtodoitem.js":"kfXSB","./rendertodoitem.js":"31aQR"}],"aJ4Uq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getTime", ()=>getTime);
+const getTime = ()=>{
+    const timeContainer = document.querySelector(".header__time");
+    const date = new Date();
+    const currentTime = date.toLocaleTimeString();
+    timeContainer.textContent = currentTime;
+    setTimeout(getTime, 1000);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"lVRAz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "showAddModal", ()=>showAddModal);
+parcelHelpers.export(exports, "hideAddModal", ()=>hideAddModal);
+parcelHelpers.export(exports, "updateLocalStorage", ()=>updateLocalStorage);
+parcelHelpers.export(exports, "updatePage", ()=>updatePage);
+var _rendertodoitemJs = require("./rendertodoitem.js");
+const showAddModal = (container)=>{
+    container.classList.add("activeModal");
+};
+const hideAddModal = (container)=>{
+    container.classList.remove("activeModal");
+};
+const updateLocalStorage = (todoarray, progressarray, donearray)=>{
+    localStorage.setItem("todoArr", JSON.stringify(todoarray));
+    localStorage.setItem("progressArr", JSON.stringify(progressarray));
+    localStorage.setItem("doneArr", JSON.stringify(donearray));
+};
+const updatePage = (container, container2, container3, needtodo, savetodo, progress, saveprogress, done, savedone)=>{
+    if (savetodo.length) for (let todo of savetodo){
+        needtodo.push(todo);
+        (0, _rendertodoitemJs.renderTodoItem)(container, todo);
+    }
+    if (saveprogress.length) for (let todo of saveprogress){
+        progress.push(todo);
+        (0, _rendertodoitemJs.renderTodoItem)(container2, todo);
+    }
+    if (savedone.length) for (let todo of savedone){
+        done.push(todo);
+        (0, _rendertodoitemJs.renderTodoItem)(container3, todo);
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./rendertodoitem.js":"31aQR"}],"31aQR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "renderTodoItem", ()=>renderTodoItem);
+const renderTodoItem = (container, obj)=>{
+    const itemBlock = document.createElement("div");
+    const itemBlockHeader = document.createElement("div");
+    const itemBlockMain = document.createElement("div");
+    const itemBlockFooter = document.createElement("div");
+    const title = document.createElement("div");
+    const descr = document.createElement("div");
+    const user = document.createElement("div");
+    const time = document.createElement("div");
+    const editBtn = document.createElement("button");
+    const delBtn = document.createElement("button");
+    const moveToProgressBtn = document.createElement("button");
+    container.append(itemBlock);
+    itemBlock.append(itemBlockHeader, itemBlockMain, itemBlockFooter);
+    itemBlockHeader.append(title, editBtn, delBtn);
+    itemBlockMain.append(descr, moveToProgressBtn);
+    itemBlockFooter.append(user, time);
+    title.innerText = obj.title;
+    editBtn.innerText = "Edit";
+    delBtn.innerText = "Delete";
+    descr.innerText = obj.descr;
+    moveToProgressBtn.innerText = ">";
+    user.innerText = "User1";
+    time.innerText = obj.data;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kfXSB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createTodoItem", ()=>createTodoItem);
+const createTodoItem = (modalTitleValue, modalDescrValue)=>{
+    if (!modalTitleValue || !modalDescrValue) return;
+    const date = new Date();
+    const title = modalTitleValue;
+    const descr = modalDescrValue;
+    const todoItem = {
+        title,
+        descr,
+        data: date.toLocaleDateString(),
+        id: Date.now()
+    };
+    return todoItem;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["gEwwu","1SICI"], "1SICI", "parcelRequire1fb0")
 
 //# sourceMappingURL=index.18dbc454.js.map

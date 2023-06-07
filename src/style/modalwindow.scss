@@ -1,0 +1,41 @@
+.modalContainer {
+    @extend %modal;
+    display: none;
+}
+
+.activeModal {
+    display: block;
+}
+
+
+.modalTitle {
+    width: 55%;
+    margin-bottom: 15px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.modalDescr {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    resize: none;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.modalBtnContainer {
+    display: flex;
+    justify-content: space-around;
+}
+.modalCancelBtn, .modalAddBtn {
+    @extend %modalbtn
+}
+
+.modalCancelBtn:hover,
+ .modalAddBtn:hover {
+    background-color: #aaa5a5;
+ } 
