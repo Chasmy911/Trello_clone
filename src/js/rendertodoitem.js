@@ -28,8 +28,9 @@ export const renderTodoItem = (container, obj) => {
     user.innerText = 'User1';
     time.innerText = obj.data;
 
-        delBtn.setAttribute('data-name', 'closeBtn');
+    delBtn.setAttribute('data-name', 'closeBtn');
     itemBlock.setAttribute('data-todoid', obj.id);
+    moveToProgressBtn.setAttribute('data-name', 'moveToProgress');
 
     itemBlock.classList.add('itemBlock');
     itemBlockHeader.classList.add('itemBlockHeader');
@@ -40,4 +41,7 @@ export const renderTodoItem = (container, obj) => {
     editBtn.classList.add('editBtn');
     delBtn.classList.add('delBtn');
     moveToProgressBtn.classList.add('moveToProgressBtn');
+
+    return itemBlock 
 }
+

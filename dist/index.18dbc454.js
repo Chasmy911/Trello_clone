@@ -613,8 +613,12 @@ doneBlock.classList.add("doneBlock");
 todoBlockHeader.classList.add("todoBlockHeader");
 progressBlockHeader.classList.add("progressBlockHeader");
 doneBlockHeader.classList.add("doneBlockHeader");
+todoBlockContainer.classList.add("todoBlockContainer");
+progressBlockContainer.classList.add("progressBlockContainer");
+doneBlockContainer.classList.add("doneBlockContainer");
 todoBlockBtn.classList.add("todoBlockBtn");
 doneBlockBtn.classList.add("doneBlockBtn");
+todoBlockHeaderAmount.classList.add("todoBlockHeaderAmount");
 todoBlockHeaderTitle.innerText = "TODO:";
 progressBlockHeaderTitle.innerText = "IN PROGRESS:";
 doneBlockHeaderTitle.innerText = "DONE:";
@@ -651,12 +655,13 @@ modalCancelBtn.addEventListener("click", ()=>{
     (0, _helperJs.hideAddModal)(modalContainer);
 });
 //create todo
-const todoArr = [];
-const progressArr = [];
-const doneArr = [];
-const savedTodoArr = JSON.parse(localStorage.getItem("todoArr")) || [];
-const savedProgressArr = JSON.parse(localStorage.getItem("progressArr")) || [];
-const savedDoneArr = JSON.parse(localStorage.getItem("doneArr")) || [];
+let todoArr = [];
+let progressArr = [];
+let doneArr = [];
+let savedTodoArr = JSON.parse(localStorage.getItem("todoArr")) || [];
+let savedProgressArr = JSON.parse(localStorage.getItem("progressArr")) || [];
+let savedDoneArr = JSON.parse(localStorage.getItem("doneArr")) || [];
+todoBlockHeaderAmount.innerText = todoArr.length;
 const handleTodo = ()=>{
     const todoItem = (0, _createtodoitemJs.createTodoItem)(modalTitle.value, modalDescr.value);
     if (modalTitle.value && modalDescr.value) {
@@ -666,14 +671,59 @@ const handleTodo = ()=>{
     }
     if (!todoItem) return;
     todoArr.push(todoItem);
-    console.log(todoArr);
-    (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todoItem);
+    const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todoItem);
+    deleteTodoItem(itemContainer);
+    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+    (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+};
+const handleProgressTodo = (todoItem)=>{
+    progressArr.push(todoItem);
+    const progressitemContainer = (0, _rendertodoitemJs.renderTodoItem)(progressBlockContainer, todoItem);
+    (0, _helperJs.changeStyletoProgress)(progressitemContainer);
+    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
     (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
 };
 modalAddBtn.addEventListener("click", handleTodo);
 document.addEventListener("DOMContentLoaded", ()=>{
-    (0, _helperJs.updatePage)(todoBlockContainer, progressBlockContainer, doneBlockContainer, todoArr, savedTodoArr, progressArr, savedProgressArr, doneArr, savedDoneArr);
+    updatePage(todoBlockContainer, progressBlockContainer, doneBlockContainer, todoArr, savedTodoArr, progressArr, savedProgressArr, doneArr, savedDoneArr);
 });
+const deleteTodoItem = (itemBlock)=>{
+    itemBlock.addEventListener("click", (event)=>{
+        if (event.target.dataset.name === "closeBtn") {
+            const todoID = itemBlock.dataset.todoid;
+            event.currentTarget.remove();
+            todoArr = todoArr.filter((todo)=>+todoID !== +todo.id);
+            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+            (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+        }
+    });
+    itemBlock.addEventListener("click", (event)=>{
+        if (event.target.dataset.name === "moveToProgress") {
+            const todoID = itemBlock.dataset.todoid;
+            event.currentTarget.remove();
+            let item = todoArr.find((todo)=>+todoID === +todo.id);
+            todoArr = todoArr.filter((todo)=>+todoID !== +todo.id);
+            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+            handleProgressTodo(item);
+            (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+        }
+    });
+};
+const updatePage = (container, container2, container3, needtodo, savetodo, progress, saveprogress, done, savedone)=>{
+    if (savedTodoArr.length) for (let todo of savedTodoArr){
+        todoArr.push(todo);
+        const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todo);
+        deleteTodoItem(itemContainer);
+        (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+    }
+    if (savedProgressArr.length) for (let todo of savedProgressArr)handleProgressTodo(todo);
+// if (savedone.length) {
+//     for (let todo of savedone) {
+//         done.push(todo);
+//         renderTodoItem(container3, todo);
+//     }
+// }
+};
 
 },{"./headertime.js":"aJ4Uq","./helper.js":"lVRAz","./createtodoitem.js":"kfXSB","./rendertodoitem.js":"31aQR"}],"aJ4Uq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -723,8 +773,8 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "showAddModal", ()=>showAddModal);
 parcelHelpers.export(exports, "hideAddModal", ()=>hideAddModal);
 parcelHelpers.export(exports, "updateLocalStorage", ()=>updateLocalStorage);
-parcelHelpers.export(exports, "updatePage", ()=>updatePage);
-var _rendertodoitemJs = require("./rendertodoitem.js");
+parcelHelpers.export(exports, "getAmount", ()=>getAmount);
+parcelHelpers.export(exports, "changeStyletoProgress", ()=>changeStyletoProgress);
 const showAddModal = (container)=>{
     container.classList.add("activeModal");
 };
@@ -736,22 +786,32 @@ const updateLocalStorage = (todoarray, progressarray, donearray)=>{
     localStorage.setItem("progressArr", JSON.stringify(progressarray));
     localStorage.setItem("doneArr", JSON.stringify(donearray));
 };
-const updatePage = (container, container2, container3, needtodo, savetodo, progress, saveprogress, done, savedone)=>{
-    if (savetodo.length) for (let todo of savetodo){
-        needtodo.push(todo);
-        (0, _rendertodoitemJs.renderTodoItem)(container, todo);
-    }
-    if (saveprogress.length) for (let todo of saveprogress){
-        progress.push(todo);
-        (0, _rendertodoitemJs.renderTodoItem)(container2, todo);
-    }
-    if (savedone.length) for (let todo of savedone){
-        done.push(todo);
-        (0, _rendertodoitemJs.renderTodoItem)(container3, todo);
-    }
+const getAmount = (todoAmount, todoArr)=>{
+    todoAmount.innerText = todoArr.length;
+};
+const changeStyletoProgress = (itemBlock)=>{
+    itemBlock.classList.add("moveToProgressStyle");
 };
 
-},{"./rendertodoitem.js":"31aQR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"31aQR":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kfXSB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createTodoItem", ()=>createTodoItem);
+const createTodoItem = (modalTitleValue, modalDescrValue)=>{
+    if (!modalTitleValue || !modalDescrValue) return;
+    const date = new Date();
+    const title = modalTitleValue;
+    const descr = modalDescrValue;
+    const todoItem = {
+        title,
+        descr,
+        data: date.toLocaleDateString(),
+        id: Date.now()
+    };
+    return todoItem;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"31aQR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderTodoItem", ()=>renderTodoItem);
@@ -783,6 +843,7 @@ const renderTodoItem = (container, obj)=>{
     time.innerText = obj.data;
     delBtn.setAttribute("data-name", "closeBtn");
     itemBlock.setAttribute("data-todoid", obj.id);
+    moveToProgressBtn.setAttribute("data-name", "moveToProgress");
     itemBlock.classList.add("itemBlock");
     itemBlockHeader.classList.add("itemBlockHeader");
     title.classList.add("title");
@@ -792,24 +853,7 @@ const renderTodoItem = (container, obj)=>{
     editBtn.classList.add("editBtn");
     delBtn.classList.add("delBtn");
     moveToProgressBtn.classList.add("moveToProgressBtn");
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kfXSB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "createTodoItem", ()=>createTodoItem);
-const createTodoItem = (modalTitleValue, modalDescrValue)=>{
-    if (!modalTitleValue || !modalDescrValue) return;
-    const date = new Date();
-    const title = modalTitleValue;
-    const descr = modalDescrValue;
-    const todoItem = {
-        title,
-        descr,
-        data: date.toLocaleDateString(),
-        id: Date.now()
-    };
-    return todoItem;
+    return itemBlock;
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["gEwwu","1SICI"], "1SICI", "parcelRequire1fb0")

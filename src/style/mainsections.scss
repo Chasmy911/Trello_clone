@@ -68,3 +68,17 @@
     background: $blue;
     border: 2px solid $blue;
 }
+
+.todoBlockHeaderAmount {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+
+.todoBlockContainer, .progressBlockContainer, .doneBlockContainer {
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+
+}

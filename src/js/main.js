@@ -1,7 +1,7 @@
 import { getTime } from "./headertime.js";
-import { showAddModal, hideAddModal, updateLocalStorage, updatePage } from "./helper.js";
+import { showAddModal, hideAddModal, updateLocalStorage, getAmount, changeStyletoProgress } from "./helper.js";
 import { createTodoItem } from "./createtodoitem.js";
-import { renderTodoItem } from "./rendertodoitem.js";
+import { renderTodoItem, renderProgressItem } from "./rendertodoitem.js";
 
 // header time
 
@@ -52,9 +52,13 @@ todoBlockHeader.classList.add('todoBlockHeader');
 progressBlockHeader.classList.add('progressBlockHeader');
 doneBlockHeader.classList.add('doneBlockHeader');
 
+todoBlockContainer.classList.add('todoBlockContainer');
+progressBlockContainer.classList.add('progressBlockContainer');
+doneBlockContainer.classList.add('doneBlockContainer')
 
 todoBlockBtn.classList.add('todoBlockBtn');
 doneBlockBtn.classList.add('doneBlockBtn')
+todoBlockHeaderAmount.classList.add('todoBlockHeaderAmount')
 
 todoBlockHeaderTitle.innerText = 'TODO:';
 progressBlockHeaderTitle.innerText = 'IN PROGRESS:';
@@ -102,12 +106,14 @@ modalCancelBtn.addEventListener('click', () => {
 
 //create todo
 
-const todoArr = [];
-const progressArr = [];
-const doneArr = [];
-const savedTodoArr = JSON.parse(localStorage.getItem('todoArr')) || [];
-const savedProgressArr = JSON.parse(localStorage.getItem('progressArr')) || [];
-const savedDoneArr = JSON.parse(localStorage.getItem('doneArr')) || [];
+let todoArr = [];
+let progressArr = [];
+let doneArr = [];
+let savedTodoArr = JSON.parse(localStorage.getItem('todoArr')) || [];
+let savedProgressArr = JSON.parse(localStorage.getItem('progressArr')) || [];
+let savedDoneArr = JSON.parse(localStorage.getItem('doneArr')) || [];
+
+todoBlockHeaderAmount.innerText = todoArr.length
 
 
 
@@ -122,12 +128,22 @@ const handleTodo = () => {
     if (!todoItem) { return };
 
     todoArr.push(todoItem);
-    console.log (todoArr)
 
-    renderTodoItem(todoBlockContainer, todoItem);
+    const itemContainer = renderTodoItem(todoBlockContainer, todoItem);
+    deleteTodoItem(itemContainer)
 
+    getAmount(todoBlockHeaderAmount, todoArr)
     updateLocalStorage(todoArr, progressArr, doneArr);
 };
+
+const handleProgressTodo = (todoItem) => {
+    progressArr.push(todoItem);
+    const progressitemContainer = renderTodoItem(progressBlockContainer, todoItem);
+    changeStyletoProgress(progressitemContainer)
+
+    getAmount(todoBlockHeaderAmount, todoArr)
+    updateLocalStorage(todoArr, progressArr, doneArr);
+}
 
 
 modalAddBtn.addEventListener('click', handleTodo);
@@ -137,3 +153,53 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+const deleteTodoItem = (itemBlock) => {
+    itemBlock.addEventListener('click', (event) => {
+        if (event.target.dataset.name === 'closeBtn') {
+            const todoID = itemBlock.dataset.todoid;
+            event.currentTarget.remove();
+
+            todoArr = todoArr.filter(todo => +todoID !== +todo.id);
+            getAmount(todoBlockHeaderAmount, todoArr)
+            updateLocalStorage(todoArr, progressArr, doneArr);
+        }
+    })
+
+    itemBlock.addEventListener('click', (event) => {
+        if (event.target.dataset.name === 'moveToProgress') {
+            const todoID = itemBlock.dataset.todoid;
+            event.currentTarget.remove();
+
+            let item = todoArr.find(todo => +todoID === +todo.id);
+            todoArr = todoArr.filter(todo => +todoID !== +todo.id);
+            getAmount(todoBlockHeaderAmount, todoArr);
+            handleProgressTodo(item);
+            updateLocalStorage(todoArr, progressArr, doneArr);
+        }
+    })
+
+}
+
+
+const updatePage = (container, container2, container3, needtodo, savetodo, progress, saveprogress, done, savedone) => {
+    if (savedTodoArr.length) {
+        for (let todo of savedTodoArr) {
+            todoArr.push(todo);
+            const itemContainer = renderTodoItem(todoBlockContainer, todo);
+            deleteTodoItem(itemContainer);
+            getAmount(todoBlockHeaderAmount, todoArr)
+
+        }
+    }
+    if (savedProgressArr.length) {
+        for (let todo of savedProgressArr) {
+            handleProgressTodo(todo);
+        }
+    }
+    // if (savedone.length) {
+    //     for (let todo of savedone) {
+    //         done.push(todo);
+    //         renderTodoItem(container3, todo);
+    //     }
+    // }
+}
