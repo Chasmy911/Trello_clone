@@ -58,7 +58,7 @@ button {
 }
 
 .wrapper {
-  height: 100vh;
+  min-height: 100vh;
   background: url("main_phone.ef618da7.jpg") center / cover no-repeat;
   padding: 10px;
 }
@@ -189,6 +189,46 @@ button {
 
 .modalCancelBtn:hover, .modalAddBtn:hover {
   background-color: #aaa5a5;
+}
+
+.itemBlock {
+  width: 90%;
+  background: #5fc777;
+  border: 2px solid #000;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+.itemBlockHeader, .itemBlockMain, .itemBlockFooter {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 5px;
+  display: flex;
+}
+
+.title {
+  max-width: 60%;
+}
+
+.btnContainer {
+  justify-content: space-between;
+  gap: 10px;
+  display: flex;
+}
+
+.editBtn, .delBtn {
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.editBtn:hover, .delBtn:hover, .moveToProgressBtn:hover {
+  color: red;
+  background-color: #faebd7;
+}
+
+.moveToProgressBtn {
+  padding: 5px;
 }
 
 .footer {

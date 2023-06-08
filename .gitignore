@@ -1,2 +1,4 @@
-.cache
+.parcel=cache
+parcel=cache
 node_modules
+

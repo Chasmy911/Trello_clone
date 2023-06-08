@@ -1,0 +1,45 @@
+.itemBlock {
+    border: 2px solid black;
+    width: 90%;
+    margin: 10px auto;
+    background: $todoitemcolor;
+    border-radius: 10px;
+
+}
+
+.itemBlockHeader,
+.itemBlockMain,
+.itemBlockFooter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 5px;
+}
+
+.title {
+    max-width: 60%;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.editBtn,
+.delBtn {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.editBtn:hover,
+.delBtn:hover,
+.moveToProgressBtn:hover {
+  color: red;
+  background-color: antiquewhite;
+}
+
+.moveToProgressBtn {
+    padding: 5px;
+}

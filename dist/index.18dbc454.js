@@ -751,7 +751,7 @@ const updatePage = (container, container2, container3, needtodo, savetodo, progr
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./rendertodoitem.js":"31aQR"}],"31aQR":[function(require,module,exports) {
+},{"./rendertodoitem.js":"31aQR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"31aQR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderTodoItem", ()=>renderTodoItem);
@@ -764,12 +764,14 @@ const renderTodoItem = (container, obj)=>{
     const descr = document.createElement("div");
     const user = document.createElement("div");
     const time = document.createElement("div");
+    const btnContainer = document.createElement("div");
     const editBtn = document.createElement("button");
     const delBtn = document.createElement("button");
     const moveToProgressBtn = document.createElement("button");
     container.append(itemBlock);
     itemBlock.append(itemBlockHeader, itemBlockMain, itemBlockFooter);
-    itemBlockHeader.append(title, editBtn, delBtn);
+    itemBlockHeader.append(title, btnContainer);
+    btnContainer.append(editBtn, delBtn);
     itemBlockMain.append(descr, moveToProgressBtn);
     itemBlockFooter.append(user, time);
     title.innerText = obj.title;
@@ -779,6 +781,17 @@ const renderTodoItem = (container, obj)=>{
     moveToProgressBtn.innerText = ">";
     user.innerText = "User1";
     time.innerText = obj.data;
+    delBtn.setAttribute("data-name", "closeBtn");
+    itemBlock.setAttribute("data-todoid", obj.id);
+    itemBlock.classList.add("itemBlock");
+    itemBlockHeader.classList.add("itemBlockHeader");
+    title.classList.add("title");
+    itemBlockMain.classList.add("itemBlockMain");
+    itemBlockFooter.classList.add("itemBlockFooter");
+    btnContainer.classList.add("btnContainer");
+    editBtn.classList.add("editBtn");
+    delBtn.classList.add("delBtn");
+    moveToProgressBtn.classList.add("moveToProgressBtn");
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kfXSB":[function(require,module,exports) {
