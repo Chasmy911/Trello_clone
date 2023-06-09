@@ -16,12 +16,12 @@ export const renderTodoItem = (container, obj) => {
     container.append(itemBlock);
     itemBlock.append(itemBlockHeader, itemBlockMain, itemBlockFooter);
     itemBlockHeader.append(title, btnContainer);
-    btnContainer.append(editBtn, delBtn)
-    
+
+
     itemBlockFooter.append(user, time);
 
     title.innerText = obj.title;
-    
+
     descr.innerText = obj.descr;
     user.innerText = 'User1';
     time.innerText = obj.data;
@@ -29,6 +29,7 @@ export const renderTodoItem = (container, obj) => {
     delBtn.setAttribute('data-name', 'closeBtn');
     itemBlock.setAttribute('data-todoid', obj.id);
     moveToProgressBtn.setAttribute('data-name', 'moveToProgress');
+
 
     itemBlock.classList.add('itemBlock');
     itemBlockHeader.classList.add('itemBlockHeader');
@@ -43,16 +44,24 @@ export const renderTodoItem = (container, obj) => {
 
 
     if (container.classList.contains('todoBlockContainer')) {
+        btnContainer.append(editBtn, delBtn)
         itemBlockMain.append(descr, moveToProgressBtn);
         moveToProgressBtn.innerText = '>';
         editBtn.innerText = 'Edit';
-    delBtn.innerText = 'Delete';
+        delBtn.innerText = 'Delete';
     }
     else if (container.classList.contains('progressBlockContainer')) {
+        btnContainer.append(editBtn, delBtn)
         itemBlockMain.append(descr);
         editBtn.innerText = 'BACK';
         delBtn.innerText = 'COMPLETE';
-    } 
+        editBtn.setAttribute('data-name', 'moveToTodo');
+        delBtn.setAttribute('data-name', 'moveToDone');
+    } else {
+        btnContainer.append(delBtn)
+        itemBlockMain.append(descr);
+        delBtn.innerText = 'DELETE';
+    }
 
     return itemBlock
 }

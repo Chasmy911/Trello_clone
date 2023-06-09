@@ -242,7 +242,7 @@ button {
   padding: 5px;
 }
 
-.moveToProgressStyle {
+.moveToProgressStyle, .moveToDoneStyle {
   background-color: #e9f4bd;
 }
 

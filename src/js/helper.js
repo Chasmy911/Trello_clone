@@ -14,12 +14,19 @@ export const updateLocalStorage = (todoarray, progressarray, donearray) => {
     localStorage.setItem('doneArr', JSON.stringify(donearray));
 }
 
-export const getAmount = (todoAmount, todoArr, progressAmount, progressArr) => {
+export const getAmount = (todoAmount, todoArr, progressAmount, progressArr, doneAmount, doneArr) => {
     todoAmount.innerText = todoArr.length;
     progressAmount.innerText = progressArr.length;
+    doneAmount.innerText = doneArr.length;
 }
 
 export const changeStyletoProgress = (itemBlock) => {
     itemBlock.classList.add('moveToProgressStyle');
 
 }
+
+export const changeStyletoDone = (itemBlock) => {
+    itemBlock.classList.add('moveToDoneStyle ');
+
+}
+
