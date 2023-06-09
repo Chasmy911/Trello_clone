@@ -619,6 +619,7 @@ doneBlockContainer.classList.add("doneBlockContainer");
 todoBlockBtn.classList.add("todoBlockBtn");
 doneBlockBtn.classList.add("doneBlockBtn");
 todoBlockHeaderAmount.classList.add("todoBlockHeaderAmount");
+progressBlockHeaderAmount.classList.add("progressBlockHeaderAmount");
 todoBlockHeaderTitle.innerText = "TODO:";
 progressBlockHeaderTitle.innerText = "IN PROGRESS:";
 doneBlockHeaderTitle.innerText = "DONE:";
@@ -662,6 +663,7 @@ let savedTodoArr = JSON.parse(localStorage.getItem("todoArr")) || [];
 let savedProgressArr = JSON.parse(localStorage.getItem("progressArr")) || [];
 let savedDoneArr = JSON.parse(localStorage.getItem("doneArr")) || [];
 todoBlockHeaderAmount.innerText = todoArr.length;
+progressBlockHeaderAmount.innerText = progressArr.length;
 const handleTodo = ()=>{
     const todoItem = (0, _createtodoitemJs.createTodoItem)(modalTitle.value, modalDescr.value);
     if (modalTitle.value && modalDescr.value) {
@@ -673,27 +675,24 @@ const handleTodo = ()=>{
     todoArr.push(todoItem);
     const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todoItem);
     deleteTodoItem(itemContainer);
-    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr);
     (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
 };
 const handleProgressTodo = (todoItem)=>{
     progressArr.push(todoItem);
     const progressitemContainer = (0, _rendertodoitemJs.renderTodoItem)(progressBlockContainer, todoItem);
     (0, _helperJs.changeStyletoProgress)(progressitemContainer);
-    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr);
     (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
 };
 modalAddBtn.addEventListener("click", handleTodo);
-document.addEventListener("DOMContentLoaded", ()=>{
-    updatePage(todoBlockContainer, progressBlockContainer, doneBlockContainer, todoArr, savedTodoArr, progressArr, savedProgressArr, doneArr, savedDoneArr);
-});
 const deleteTodoItem = (itemBlock)=>{
     itemBlock.addEventListener("click", (event)=>{
         if (event.target.dataset.name === "closeBtn") {
             const todoID = itemBlock.dataset.todoid;
             event.currentTarget.remove();
             todoArr = todoArr.filter((todo)=>+todoID !== +todo.id);
-            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr);
             (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
         }
     });
@@ -703,27 +702,25 @@ const deleteTodoItem = (itemBlock)=>{
             event.currentTarget.remove();
             let item = todoArr.find((todo)=>+todoID === +todo.id);
             todoArr = todoArr.filter((todo)=>+todoID !== +todo.id);
-            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
+            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr);
             handleProgressTodo(item);
             (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
         }
     });
 };
-const updatePage = (container, container2, container3, needtodo, savetodo, progress, saveprogress, done, savedone)=>{
-    if (savedTodoArr.length) for (let todo of savedTodoArr){
-        todoArr.push(todo);
-        const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todo);
-        deleteTodoItem(itemContainer);
-        (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr);
-    }
-    if (savedProgressArr.length) for (let todo of savedProgressArr)handleProgressTodo(todo);
-// if (savedone.length) {
-//     for (let todo of savedone) {
-//         done.push(todo);
-//         renderTodoItem(container3, todo);
-//     }
-// }
-};
+if (savedTodoArr.length) for (let todo of savedTodoArr){
+    todoArr.push(todo);
+    const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todo);
+    deleteTodoItem(itemContainer);
+    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr);
+}
+if (savedProgressArr.length) for (let todo of savedProgressArr)handleProgressTodo(todo);
+ // if (savedone.length) {
+ //     for (let todo of savedone) {
+ //         done.push(todo);
+ //         renderTodoItem(container3, todo);
+ //     }
+ // }
 
 },{"./headertime.js":"aJ4Uq","./helper.js":"lVRAz","./createtodoitem.js":"kfXSB","./rendertodoitem.js":"31aQR"}],"aJ4Uq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -786,8 +783,9 @@ const updateLocalStorage = (todoarray, progressarray, donearray)=>{
     localStorage.setItem("progressArr", JSON.stringify(progressarray));
     localStorage.setItem("doneArr", JSON.stringify(donearray));
 };
-const getAmount = (todoAmount, todoArr)=>{
+const getAmount = (todoAmount, todoArr, progressAmount, progressArr)=>{
     todoAmount.innerText = todoArr.length;
+    progressAmount.innerText = progressArr.length;
 };
 const changeStyletoProgress = (itemBlock)=>{
     itemBlock.classList.add("moveToProgressStyle");
@@ -832,13 +830,9 @@ const renderTodoItem = (container, obj)=>{
     itemBlock.append(itemBlockHeader, itemBlockMain, itemBlockFooter);
     itemBlockHeader.append(title, btnContainer);
     btnContainer.append(editBtn, delBtn);
-    itemBlockMain.append(descr, moveToProgressBtn);
     itemBlockFooter.append(user, time);
     title.innerText = obj.title;
-    editBtn.innerText = "Edit";
-    delBtn.innerText = "Delete";
     descr.innerText = obj.descr;
-    moveToProgressBtn.innerText = ">";
     user.innerText = "User1";
     time.innerText = obj.data;
     delBtn.setAttribute("data-name", "closeBtn");
@@ -853,6 +847,16 @@ const renderTodoItem = (container, obj)=>{
     editBtn.classList.add("editBtn");
     delBtn.classList.add("delBtn");
     moveToProgressBtn.classList.add("moveToProgressBtn");
+    if (container.classList.contains("todoBlockContainer")) {
+        itemBlockMain.append(descr, moveToProgressBtn);
+        moveToProgressBtn.innerText = ">";
+        editBtn.innerText = "Edit";
+        delBtn.innerText = "Delete";
+    } else if (container.classList.contains("progressBlockContainer")) {
+        itemBlockMain.append(descr);
+        editBtn.innerText = "BACK";
+        delBtn.innerText = "COMPLETE";
+    }
     return itemBlock;
 };
 

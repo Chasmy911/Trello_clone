@@ -57,8 +57,9 @@ progressBlockContainer.classList.add('progressBlockContainer');
 doneBlockContainer.classList.add('doneBlockContainer')
 
 todoBlockBtn.classList.add('todoBlockBtn');
-doneBlockBtn.classList.add('doneBlockBtn')
-todoBlockHeaderAmount.classList.add('todoBlockHeaderAmount')
+doneBlockBtn.classList.add('doneBlockBtn');
+todoBlockHeaderAmount.classList.add('todoBlockHeaderAmount');
+progressBlockHeaderAmount.classList.add('progressBlockHeaderAmount');
 
 todoBlockHeaderTitle.innerText = 'TODO:';
 progressBlockHeaderTitle.innerText = 'IN PROGRESS:';
@@ -113,7 +114,8 @@ let savedTodoArr = JSON.parse(localStorage.getItem('todoArr')) || [];
 let savedProgressArr = JSON.parse(localStorage.getItem('progressArr')) || [];
 let savedDoneArr = JSON.parse(localStorage.getItem('doneArr')) || [];
 
-todoBlockHeaderAmount.innerText = todoArr.length
+todoBlockHeaderAmount.innerText = todoArr.length;
+progressBlockHeaderAmount.innerText = progressArr.length;
 
 
 
@@ -132,7 +134,7 @@ const handleTodo = () => {
     const itemContainer = renderTodoItem(todoBlockContainer, todoItem);
     deleteTodoItem(itemContainer)
 
-    getAmount(todoBlockHeaderAmount, todoArr)
+    getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr)
     updateLocalStorage(todoArr, progressArr, doneArr);
 };
 
@@ -141,16 +143,13 @@ const handleProgressTodo = (todoItem) => {
     const progressitemContainer = renderTodoItem(progressBlockContainer, todoItem);
     changeStyletoProgress(progressitemContainer)
 
-    getAmount(todoBlockHeaderAmount, todoArr)
+    getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr)
     updateLocalStorage(todoArr, progressArr, doneArr);
 }
 
 
 modalAddBtn.addEventListener('click', handleTodo);
 
-document.addEventListener("DOMContentLoaded", () => {
-    updatePage(todoBlockContainer, progressBlockContainer, doneBlockContainer, todoArr, savedTodoArr, progressArr, savedProgressArr, doneArr, savedDoneArr)
-});
 
 
 const deleteTodoItem = (itemBlock) => {
@@ -160,7 +159,7 @@ const deleteTodoItem = (itemBlock) => {
             event.currentTarget.remove();
 
             todoArr = todoArr.filter(todo => +todoID !== +todo.id);
-            getAmount(todoBlockHeaderAmount, todoArr)
+            getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr)
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
     })
@@ -172,7 +171,7 @@ const deleteTodoItem = (itemBlock) => {
 
             let item = todoArr.find(todo => +todoID === +todo.id);
             todoArr = todoArr.filter(todo => +todoID !== +todo.id);
-            getAmount(todoBlockHeaderAmount, todoArr);
+            getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr)
             handleProgressTodo(item);
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
@@ -181,13 +180,12 @@ const deleteTodoItem = (itemBlock) => {
 }
 
 
-const updatePage = (container, container2, container3, needtodo, savetodo, progress, saveprogress, done, savedone) => {
     if (savedTodoArr.length) {
         for (let todo of savedTodoArr) {
             todoArr.push(todo);
             const itemContainer = renderTodoItem(todoBlockContainer, todo);
             deleteTodoItem(itemContainer);
-            getAmount(todoBlockHeaderAmount, todoArr)
+            getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr)
 
         }
     }
@@ -202,4 +200,3 @@ const updatePage = (container, container2, container3, needtodo, savetodo, progr
     //         renderTodoItem(container3, todo);
     //     }
     // }
-}

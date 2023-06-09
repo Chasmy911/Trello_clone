@@ -14,8 +14,9 @@ export const updateLocalStorage = (todoarray, progressarray, donearray) => {
     localStorage.setItem('doneArr', JSON.stringify(donearray));
 }
 
-export const getAmount = (todoAmount, todoArr) => {
+export const getAmount = (todoAmount, todoArr, progressAmount, progressArr) => {
     todoAmount.innerText = todoArr.length;
+    progressAmount.innerText = progressArr.length;
 }
 
 export const changeStyletoProgress = (itemBlock) => {
