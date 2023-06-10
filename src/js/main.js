@@ -60,6 +60,7 @@ todoBlockBtn.classList.add('todoBlockBtn');
 doneBlockBtn.classList.add('doneBlockBtn');
 todoBlockHeaderAmount.classList.add('todoBlockHeaderAmount');
 progressBlockHeaderAmount.classList.add('progressBlockHeaderAmount');
+doneBlockHeaderAmount.classList.add('doneBlockHeaderAmount');
 
 todoBlockHeaderTitle.innerText = 'TODO:';
 progressBlockHeaderTitle.innerText = 'IN PROGRESS:';
@@ -205,20 +206,34 @@ const progressBtnFunction = (itemBlock) => {
         if (event.target.dataset.name === 'moveToDone') {
             const todoID = itemBlock.dataset.todoid;
             console.log(event.currentTarget)
-            event.currentTarget.remove();   
+            event.currentTarget.remove();
             let item = progressArr.find(todo => +todoID === +todo.id);
 
             const itemContainer = renderTodoItem(doneBlockContainer, item);
             // changeStyletoDone(itemBlock);
 
             doneArr.push(item);
-        
+            doneBtnFunction(itemContainer)
 
             progressArr = progressArr.filter(todo => +todoID !== +todo.id);
             getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
     })
+}
+
+const doneBtnFunction = (itemBlock) => {
+    itemBlock.addEventListener('click', (event) => {
+        if (event.target.dataset.name === 'closeBtn') {
+            const todoID = itemBlock.dataset.todoid;
+            event.currentTarget.remove();
+
+            doneArr = doneArr.filter(todo => +todoID !== +todo.id);
+            getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
+            updateLocalStorage(todoArr, progressArr, doneArr);
+        }
+    })
+
 }
 
 
@@ -240,7 +255,8 @@ if (savedProgressArr.length) {
 if (savedDoneArr.length) {
     for (let todo of savedDoneArr) {
         doneArr.push(todo);
-        renderTodoItem(doneBlockContainer, todo);
+        const itemContainer = renderTodoItem(doneBlockContainer, todo);
+        doneBtnFunction(itemContainer);
         getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
     }
 }

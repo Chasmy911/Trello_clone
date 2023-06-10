@@ -620,6 +620,7 @@ todoBlockBtn.classList.add("todoBlockBtn");
 doneBlockBtn.classList.add("doneBlockBtn");
 todoBlockHeaderAmount.classList.add("todoBlockHeaderAmount");
 progressBlockHeaderAmount.classList.add("progressBlockHeaderAmount");
+doneBlockHeaderAmount.classList.add("doneBlockHeaderAmount");
 todoBlockHeaderTitle.innerText = "TODO:";
 progressBlockHeaderTitle.innerText = "IN PROGRESS:";
 doneBlockHeaderTitle.innerText = "DONE:";
@@ -733,7 +734,19 @@ const progressBtnFunction = (itemBlock)=>{
             const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(doneBlockContainer, item);
             // changeStyletoDone(itemBlock);
             doneArr.push(item);
+            doneBtnFunction(itemContainer);
             progressArr = progressArr.filter((todo)=>+todoID !== +todo.id);
+            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
+            (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+        }
+    });
+};
+const doneBtnFunction = (itemBlock)=>{
+    itemBlock.addEventListener("click", (event)=>{
+        if (event.target.dataset.name === "closeBtn") {
+            const todoID = itemBlock.dataset.todoid;
+            event.currentTarget.remove();
+            doneArr = doneArr.filter((todo)=>+todoID !== +todo.id);
             (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
             (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
         }
@@ -748,7 +761,8 @@ if (savedTodoArr.length) for (let todo of savedTodoArr){
 if (savedProgressArr.length) for (let todo of savedProgressArr)handleProgressTodo(todo);
 if (savedDoneArr.length) for (let todo of savedDoneArr){
     doneArr.push(todo);
-    (0, _rendertodoitemJs.renderTodoItem)(doneBlockContainer, todo);
+    const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(doneBlockContainer, todo);
+    doneBtnFunction(itemContainer);
     (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
 }
 
