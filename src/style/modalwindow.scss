@@ -3,12 +3,19 @@
     display: none;
 }
 
+.modalDoneContainer {
+    @extend %modal;
+    background-color: #c09d9d;
+    display: none;
+}
+
 .activeModal {
     display: block;
 }
 
 
-.modalTitle {
+.modalTitle,
+.doneModalTitle {
     width: 55%;
     margin-bottom: 15px;
     padding: 5px;
@@ -27,15 +34,24 @@
     border-radius: 10px;
 }
 
-.modalBtnContainer {
+.modalBtnContainer,
+.doneModalBtnContainer {
     display: flex;
     justify-content: space-around;
 }
-.modalCancelBtn, .modalAddBtn {
+
+.modalCancelBtn,
+.modalAddBtn,
+.doneModalYesBtn,
+.doneModalNoBtn {
     @extend %modalbtn
 }
 
 .modalCancelBtn:hover,
- .modalAddBtn:hover {
+.modalAddBtn:hover,
+.doneModalYesBtn:hover,
+.doneModalNoBtn:hover {
     background-color: #aaa5a5;
- } 
+}
+
+

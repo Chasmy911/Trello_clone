@@ -1,11 +1,10 @@
 
 export const showAddModal = (container) => {
     container.classList.add('activeModal');
-
 }
 
 export const hideAddModal = (container) => {
-    container.classList.remove('activeModal')
+    container.classList.remove('activeModal');
 }
 
 export const updateLocalStorage = (todoarray, progressarray, donearray) => {

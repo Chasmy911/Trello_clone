@@ -44,21 +44,21 @@ export const renderTodoItem = (container, obj) => {
 
 
     if (container.classList.contains('todoBlockContainer')) {
-        btnContainer.append(editBtn, delBtn)
+        btnContainer.append(editBtn, delBtn);
         itemBlockMain.append(descr, moveToProgressBtn);
         moveToProgressBtn.innerText = '>';
         editBtn.innerText = 'Edit';
         delBtn.innerText = 'Delete';
     }
     else if (container.classList.contains('progressBlockContainer')) {
-        btnContainer.append(editBtn, delBtn)
+        btnContainer.append(editBtn, delBtn);
         itemBlockMain.append(descr);
         editBtn.innerText = 'BACK';
         delBtn.innerText = 'COMPLETE';
         editBtn.setAttribute('data-name', 'moveToTodo');
         delBtn.setAttribute('data-name', 'moveToDone');
     } else {
-        btnContainer.append(delBtn)
+        btnContainer.append(delBtn);
         itemBlockMain.append(descr);
         delBtn.innerText = 'DELETE';
     }

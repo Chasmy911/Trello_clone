@@ -21,6 +21,11 @@ $transparence: .8;
     width: 30%;
     border-radius: 25px;
     flex-shrink: 0;
+
+    @media (max-width: 600px) {
+        width: 80%;
+        margin: 10px auto;
+     }
 }
 
 %btn {

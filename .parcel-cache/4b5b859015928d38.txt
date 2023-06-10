@@ -1,4 +1,4 @@
-16536
+16545
 146C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\types\node_modules\@parcel\watcher\prebuilds\win32-x64\node.napi.glibc.node133307877864244577 0
 106C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\parcel\node_modules\fill-range\package.json133307877836494571 0
 79C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\remove.js133307877874548250 0
@@ -29,7 +29,7 @@
 80C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\fp\tail.js133307877875382848 0
 103C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\caniuse-lite\data\features\filesystem.js133307876517906157 0
 88C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\har-schema\lib\entry.json133307877849293614 0
-74C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\variables.scss133307875910828333 0
+74C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\variables.scss133308689873494261 0
 139C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\runtime-react-refresh\node_modules\@parcel\utils\test\config.test.js133307877851499123 0
 140C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\stylehacks\src\plugins\leadingStar.js133307877850412876 0
 132C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\reporter-dev-server\node_modules\@parcel\logger\src\Logger.js133307877840820432 0
@@ -75,7 +75,7 @@
 91C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\swiper\react\swiper-react.js133307876515666233 0
 71C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\asynckit133307877848132743 1
 109C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\jsdom\lib\jsdom\living\generated\CloseEvent.js133307877865483596 0
-54C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist133308685474160146 1
+54C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist133308733388332332 1
 94C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\caniuse-lite\data\regions\AX.js133307876507986792 0
 114C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\types\node_modules\@parcel\fs\src\NodeFS.js133307876494055386 0
 85C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\ajv\lib\refs\data.json133307877864164611 0
@@ -143,7 +143,7 @@
 83C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_baseUnary.js133307877867323478 0
 141C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\node\IdSelector.js133307876509566600 0
 122C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\postcss\lib\root.js133307877853779178 0
-56C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js133307875910672121 1
+56C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js133308705750732281 1
 127C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@swc\helpers\_\_class_static_private_field_spec_set\package.json133307876517666318 0
 103C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\swiper\core\slide\slideToClickedSlide.js133307876514506152 0
 80C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\har-validator\lib133307877841539924 1
@@ -186,7 +186,7 @@
 144C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\postcss-normalize-whitespace\package.json133307877840580595 0
 110C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\caniuse-lite\data\features\namevalue-storage.js133307876520565029 0
 141C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\htmlnano\lib\modules\sortAttributes.js133307877857057690 0
-64C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js\main.js133308684604870288 0
+64C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js\main.js133308732656601003 0
 77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\nwsapi\LICENSE133307877836334665 0
 74C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\pn\http2.js133307877852138950 0
 93C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\codeframe\node_modules133307877813297303 1
@@ -202,7 +202,7 @@
 90C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\node-gyp-build\package.json133307876491315363 0
 125C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\postcss-ordered-values133307877853059641 1
 71C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\footer.scss133307875910672121 0
-71C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\header.scss133307875910672121 0
+71C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\header.scss133308691692590293 0
 87C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\fp\pullAllWith.js133307877874388352 0
 88C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\xmlchars\xml\1.0\ed4.d.ts133307877852218662 0
 110C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\caniuse-lite\data\features\keyboardevent-key.js133307876519544902 0
@@ -220,7 +220,7 @@
 96C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\html-encoding-sniffer\LICENSE.txt133307877837925390 0
 92C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\msgpackr-extract\package.json133307876490915659 0
 125C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\js-yaml\lib\snippet.js133307877856657955 0
-77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\mainsections.scss133308677965036725 0
+77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\mainsections.scss133308689231194304 0
 133C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\reporter-dev-server\node_modules\@parcel\utils\src\debounce.js133307877852378530 0
 69C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\cssesc133307877844960264 1
 147C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\cache\node_modules\@parcel\workers\test\integration\workerfarm\master-sum.js133307876500401898 0
@@ -236,7 +236,7 @@
 147C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\parcel\node_modules\@parcel\workers\test\integration\workerfarm\master-process-id.js133307877854178893 0
 80C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@msgpackr-extract133307877884189555 1
 83C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\fp\flatten.js133307877871642450 0
-76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\modalwindow.scss133307875910828333 0
+76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\style\modalwindow.scss133308728808612514 0
 121C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\node-resolver-core\node_modules\@parcel\logger\lib133307876485889433 1
 142C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\transformer-svg\node_modules\entities\lib\generated\decode-data-html.js133307877843639606 0
 84C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\fp\unescape.js133307877876064075 0
@@ -269,7 +269,7 @@
 114C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\cache\node_modules\@parcel\watcher\src\unix133307877850093099 1
 87C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\ordered-binary\README.md133307876493115006 0
 90C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\xmlchars\xml\1.0\ed4.js.map133307877849693369 0
-66C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js\helper.js133307875910672121 0
+66C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js\helper.js133308723867880433 0
 118C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-svgo\node_modules\color-name\index.js133307877838487673 0
 137C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\postcss-minify-selectors\README.md133307877845200101 0
 127C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-svgo\node_modules\@parcel\logger\src\Logger.js133307877840900370 0
@@ -281,7 +281,7 @@
 78C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\uuid\lib\v35.js133307877850252992 0
 114C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\transformer-svg\node_modules\domelementtype133307877847733027 1
 85C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\sshpk\bin\sshpk-verify133307877843999228 0
-74C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js\rendertodoitem.js133307875910672121 0
+74C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\src\js\rendertodoitem.js133308695725896185 0
 174C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-htmlnano\node_modules\postcss-svgo\node_modules\css-tree\lib\syntax\config\parser-selector.js133307877869243432 0
 76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\color-convert133307877846239397 1
 78C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_root.js133307877869403326 0
@@ -1680,7 +1680,7 @@
 100C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\caniuse-lite\data\features\imports.js133307876518985271 0
 125C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-svgo\node_modules\@parcel\utils\.eslintrc.js133307877843319817 0
 140C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-swc\node_modules\@parcel\utils\test\input\config\empty.json133307877866163697 0
-65C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.html133308685474000304 0
+65C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.html133308733388092466 0
 85C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\color-convert\route.js133307877846559193 0
 140C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\parcel\node_modules\@parcel\watcher\prebuilds\darwin-x64\node.napi.glibc.node133307877860692091 0
 87C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\json-schema\lib\links.js133307877838727517 0
@@ -2620,6 +2620,7 @@
 135C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-image\node_modules\@parcel\utils\src\getCertificate.js133307877855578601 0
 132C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\cache\node_modules\@parcel\utils\test\input\config\empty.json133307876511445953 0
 98C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\jsdom\node_modules\ws\lib\sender.js133307877848813935 0
+73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.edab0c79.css133308733388092466 0
 135C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\runtime-browser-hmr\node_modules\@parcel\utils\src\getRootDir.js133307877856298114 0
 90C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\performance-now\.travis.yml133307877848654067 0
 123C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-svg\node_modules\color-convert\CHANGELOG.md133307877838407970 0
@@ -2659,6 +2660,7 @@
 117C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\bundler-default\node_modules\has-flag\index.js133307877840251645 0
 93C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\type-fest\ts41\snake-case.d.ts133307876504001399 0
 120C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\optimizer-swc\node_modules\supports-color\license133307877836814341 0
+72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.65edbf20.js133308685688201362 0
 123C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\transformer-svg\node_modules\domutils\lib\feeds.d.ts133307877853139590 0
 93C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\type-fest\source\asyncify.d.ts133307876490276059 0
 121C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\core\node_modules\@parcel\utils\src\http-server.js133307877856897787 0
@@ -6235,7 +6237,7 @@
 90C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_createCompounder.js133307877867963049 0
 144C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\transformer-posthtml\node_modules\htmlparser2\lib\WritableStream.d.ts.map133307877850013375 0
 85C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_createCurry.js133307877867963049 0
-79C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\trello-logo.74319b47.svg133308675842853911 0
+79C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\trello-logo.74319b47.svg133308726264096564 0
 83C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@swc\core\spack.d.ts133307876500841761 0
 84C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_createFlow.js133307877867963049 0
 86C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_createHybrid.js133307877867963049 0
@@ -6403,6 +6405,7 @@
 96C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@swc\helpers\cjs\_ts_decorate.cjs133307876511206084 0
 116C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\jsdom\lib\jsdom\living\generated\HTMLOutputElement.js133307877868243182 0
 115C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\jsdom\lib\jsdom\living\nodes\HTMLDataElement-impl.js133307877870562623 0
+72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.39fce852.js133308733388092466 0
 85C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_stackDelete.js133307877869563218 0
 87C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\_strictIndexOf.js133307877869643167 0
 82C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\lodash\fp\escape.js133307877871242697 0
@@ -12034,7 +12037,7 @@
 123C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-html\node_modules\chalk\source\templates.js133307877840580595 0
 148C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\runtime-service-worker\node_modules\@parcel\utils\test\input\config\config.js133307877851132410 0
 150C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\runtime-service-worker\node_modules\@parcel\utils\test\input\config\config.json133307877866123145 0
-78C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\main_phone.ef618da7.jpg133308675843013532 0
+78C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\main_phone.ef618da7.jpg133308726264256553 0
 149C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\runtime-service-worker\node_modules\@parcel\utils\test\input\config\empty.json133307877866163697 0
 140C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\runtime-service-worker\node_modules\@parcel\utils\src\alternatives.js133307877845120149 0
 134C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\runtime-service-worker\node_modules\@parcel\utils\src\BitSet.js133307877847278721 0
@@ -13446,7 +13449,7 @@
 128C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-css\node_modules\@parcel\utils\test\input\config133307877867243547 1
 149C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-css\node_modules\@parcel\utils\test\input\sourcemap\referenced-min.js133307877864644312 0
 153C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-css\node_modules\@parcel\utils\test\input\sourcemap\referenced-min.js.map133307877867163579 0
-78C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\main_phone.645885ab.jpg133308685462665466 0
+78C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\main_phone.645885ab.jpg133308685678527957 0
 136C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-css\node_modules\@parcel\utils\test\input\config\.testrc133307877837685556 0
 139C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-css\node_modules\@parcel\utils\test\input\config\config.cjs133307877841300083 0
 138C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\node_modules\@parcel\packager-css\node_modules\@parcel\utils\test\input\config\config.js133307877851132410 0
@@ -16499,18 +16502,20 @@
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.0815d97c.js133307875909578625 0
 73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.0d8ee5ae.css133307875909578625 0
 73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.15fbe021.css133307875909578625 0
-72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.18dbc454.js133308684605253499 0
-76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.18dbc454.js.map133308684605333435 0
+72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.18dbc454.js133308732657111477 0
+76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.18dbc454.js.map133308732657191386 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.1d04f0f6.js133307875909734843 0
 83C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.1d04f0f6.js.map.9944.7133307875909734843 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.2dc984cb.js133307875909734843 0
 76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.2dc984cb.js.map133307875909734843 0
+76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.39fce852.js.map133308733388332332 0
 83C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.3a0d5312.js.map.9944.8133307875909734843 0
+72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.3b368164.js133308685688942201 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.3f100fa1.js133307875909734843 0
 73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.3fc6adeb.css133307875909734843 0
 77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.3fc6adeb.css.map133307875909734843 0
-73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.49c9a8a6.css133308677966030177 0
-77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.49c9a8a6.css.map133308677966030177 0
+73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.49c9a8a6.css133308728809503897 0
+77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.49c9a8a6.css.map133308728809583974 0
 76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.7160ad41.js.map133308685474160146 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.7263ebb6.js133307875909891057 0
 83C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.7263ebb6.js.map.3320.8133307875909891057 0
@@ -16520,18 +16525,22 @@
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.8eceb4ca.js133307875910047467 0
 76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.8eceb4ca.js.map133307875910047467 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.a8a5d160.js133307875910047467 0
+73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.b97cb702.css133308685690591100 0
 73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.c619e2d5.css133307875910047467 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.cd8b5983.js133307875910047467 0
 76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.cd8b5983.js.map133307875910047467 0
+72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.d05f7594.js133308733388092466 0
+76C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.d05f7594.js.map133308733388332332 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.dbbd4309.js133307875910203482 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.dd2af1aa.js133308685474000304 0
 73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.e5112b35.css133307875910203482 0
 73C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.e60d8ecb.css133307875910203482 0
 77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.e60d8ecb.css.map133307875910203482 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.ead7fb7b.js133307875910203482 0
+77C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.edab0c79.css.map133308733388332332 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.f59eb427.js133307875910203482 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.f65f1d17.js133307875910203482 0
 72C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\index.fc54fc40.js133307875910203482 0
-79C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\trello-logo.57901eba.svg133308685474000304 0
+79C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\trello-logo.57901eba.svg133308685689538282 0
 83C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\trello_clone.59712999.js.map133307875910359691 0
 79C:\Users\chasm\Desktop\TMS\JS\Trello\Trello_clone\dist\trello_logo.acd3bac5.png133307875910359691 0

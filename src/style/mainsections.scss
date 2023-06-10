@@ -5,6 +5,10 @@
     opacity: 0.8;
     min-height: 70vh;
     border-radius: 20px;
+
+    @media (max-width: 600px) {
+       flex-direction: column;
+    }
 }
 
 .todoBlock {
@@ -31,6 +35,10 @@
     align-items: center;
     padding: 15px 0;
     opacity: 1;
+
+    @media (max-width: 675px) {
+        font-size: 14px;
+    }
 }
 
 .todoBlockHeader {
@@ -69,18 +77,24 @@
     border: 2px solid $blue;
 }
 
-.todoBlockHeaderAmount, 
+.todoBlockHeaderAmount,
 .progressBlockHeaderAmount,
 .doneBlockHeaderAmount {
     font-size: 20px;
     font-weight: 700;
+
+    @media (max-width: 675px) {
+        font-size: 14px;
+    }
 }
 
 
 
-.todoBlockContainer, .progressBlockContainer, .doneBlockContainer {
-display: flex;
-flex-direction: column;
-flex-grow: 1;
+.todoBlockContainer,
+.progressBlockContainer,
+.doneBlockContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
 }

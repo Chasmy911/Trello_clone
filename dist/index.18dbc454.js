@@ -650,6 +650,7 @@ modalCancelBtn.classList.add("modalCancelBtn");
 modalAddBtn.classList.add("modalAddBtn");
 todoBlockBtn.addEventListener("click", ()=>{
     (0, _helperJs.showAddModal)(modalContainer);
+    (0, _helperJs.hideAddModal)(doneModalContainer);
 });
 modalCancelBtn.addEventListener("click", ()=>{
     modalTitle.value = "";
@@ -728,7 +729,6 @@ const progressBtnFunction = (itemBlock)=>{
     itemBlock.addEventListener("click", (event)=>{
         if (event.target.dataset.name === "moveToDone") {
             const todoID = itemBlock.dataset.todoid;
-            console.log(event.currentTarget);
             event.currentTarget.remove();
             let item = progressArr.find((todo)=>+todoID === +todo.id);
             const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(doneBlockContainer, item);
@@ -752,6 +752,38 @@ const doneBtnFunction = (itemBlock)=>{
         }
     });
 };
+// done modal btn 
+const doneModalContainer = document.createElement("div");
+const doneModalBtnContainer = document.createElement("div");
+const doneModalTitle = document.createElement("div");
+const doneModalYesBtn = document.createElement("button");
+const doneModalNoBtn = document.createElement("button");
+modalBlockContainer.append(doneModalContainer);
+doneModalContainer.append(doneModalTitle, doneModalBtnContainer);
+doneModalBtnContainer.append(doneModalYesBtn, doneModalNoBtn);
+doneModalNoBtn.innerText = "No";
+doneModalYesBtn.innerText = "Yes";
+doneModalContainer.classList.add("modalDoneContainer");
+doneModalTitle.classList.add("doneModalTitle");
+doneModalBtnContainer.classList.add("doneModalBtnContainer");
+doneModalYesBtn.classList.add("doneModalYesBtn");
+doneModalNoBtn.classList.add("doneModalNoBtn");
+doneModalTitle.innerText = "Are you sure?";
+doneBlockBtn.addEventListener("click", ()=>{
+    if (!doneArr.length) return;
+    (0, _helperJs.showAddModal)(doneModalContainer);
+    (0, _helperJs.hideAddModal)(modalContainer);
+    doneModalNoBtn.addEventListener("click", ()=>{
+        (0, _helperJs.hideAddModal)(doneModalContainer);
+    });
+    doneModalYesBtn.addEventListener("click", ()=>{
+        doneBlockContainer.innerHTML = "";
+        doneArr.length = 0;
+        (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+        (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
+        (0, _helperJs.hideAddModal)(doneModalContainer);
+    });
+});
 if (savedTodoArr.length) for (let todo of savedTodoArr){
     todoArr.push(todo);
     const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todo);

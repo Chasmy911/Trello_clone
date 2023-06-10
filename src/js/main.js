@@ -1,16 +1,16 @@
 import { getTime } from "./headertime.js";
 import { showAddModal, hideAddModal, updateLocalStorage, getAmount, changeStyletoProgress, changeStyletoDone } from "./helper.js";
 import { createTodoItem } from "./createtodoitem.js";
-import { renderTodoItem, renderProgressItem } from "./rendertodoitem.js";
+import { renderTodoItem } from "./rendertodoitem.js";
 
 // header time
 
-getTime()
+getTime();
 
 // create main block
 
 const mainContainer = document.getElementById('main_block');
-const modalBlockContainer = document.getElementById('main')
+const modalBlockContainer = document.getElementById('main');
 
 const todoBlock = document.createElement('div');
 const progressBlock = document.createElement('div');
@@ -35,7 +35,7 @@ const doneBlockContainer = document.createElement('div');
 const todoBlockBtn = document.createElement('button');
 const doneBlockBtn = document.createElement('button');
 
-mainContainer.append(todoBlock, progressBlock, doneBlock)
+mainContainer.append(todoBlock, progressBlock, doneBlock);
 todoBlock.append(todoBlockHeader, todoBlockContainer, todoBlockBtn);
 progressBlock.append(progressBlockHeader, progressBlockContainer);
 doneBlock.append(doneBlockHeader, doneBlockContainer, doneBlockBtn);
@@ -54,7 +54,7 @@ doneBlockHeader.classList.add('doneBlockHeader');
 
 todoBlockContainer.classList.add('todoBlockContainer');
 progressBlockContainer.classList.add('progressBlockContainer');
-doneBlockContainer.classList.add('doneBlockContainer')
+doneBlockContainer.classList.add('doneBlockContainer');
 
 todoBlockBtn.classList.add('todoBlockBtn');
 doneBlockBtn.classList.add('doneBlockBtn');
@@ -85,25 +85,26 @@ modalBlockContainer.append(modalContainer);
 modalContainer.append(modalTitle, modalDescr, modalBtnContainer);
 modalBtnContainer.append(modalUser, modalCancelBtn, modalAddBtn);
 
-modalUser.innerText = 'Select user'
+modalUser.innerText = 'Select user';
 modalCancelBtn.innerText = 'Cancel';
 modalAddBtn.innerText = 'Confirm';
 
 modalContainer.classList.add('modalContainer');
-modalTitle.classList.add('modalTitle')
+modalTitle.classList.add('modalTitle');
 modalDescr.classList.add('modalDescr');
 modalBtnContainer.classList.add('modalBtnContainer');
 modalCancelBtn.classList.add('modalCancelBtn');
 modalAddBtn.classList.add('modalAddBtn');
 
 todoBlockBtn.addEventListener('click', () => {
-    showAddModal(modalContainer)
+    showAddModal(modalContainer);
+    hideAddModal(doneModalContainer);
 });
 
 modalCancelBtn.addEventListener('click', () => {
     modalTitle.value = '';
     modalDescr.value = '';
-    hideAddModal(modalContainer)
+    hideAddModal(modalContainer);
 });
 
 //create todo
@@ -126,7 +127,7 @@ const handleTodo = () => {
     if (modalTitle.value && modalDescr.value) {
         modalTitle.value = '';
         modalDescr.value = '';
-        hideAddModal(modalContainer)
+        hideAddModal(modalContainer);
     }
 
     if (!todoItem) { return };
@@ -152,7 +153,6 @@ const handleProgressTodo = (todoItem) => {
 
 
 modalAddBtn.addEventListener('click', handleTodo);
-
 
 
 const todoBtnFunction = (itemBlock) => {
@@ -205,7 +205,7 @@ const progressBtnFunction = (itemBlock) => {
     itemBlock.addEventListener('click', (event) => {
         if (event.target.dataset.name === 'moveToDone') {
             const todoID = itemBlock.dataset.todoid;
-            console.log(event.currentTarget)
+
             event.currentTarget.remove();
             let item = progressArr.find(todo => +todoID === +todo.id);
 
@@ -213,7 +213,7 @@ const progressBtnFunction = (itemBlock) => {
             // changeStyletoDone(itemBlock);
 
             doneArr.push(item);
-            doneBtnFunction(itemContainer)
+            doneBtnFunction(itemContainer);
 
             progressArr = progressArr.filter(todo => +todoID !== +todo.id);
             getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
@@ -235,6 +235,53 @@ const doneBtnFunction = (itemBlock) => {
     })
 
 }
+
+// done modal btn 
+const doneModalContainer = document.createElement('div');
+const doneModalBtnContainer = document.createElement('div');
+const doneModalTitle = document.createElement('div');
+const doneModalYesBtn = document.createElement('button');
+const doneModalNoBtn = document.createElement('button');
+
+modalBlockContainer.append(doneModalContainer);
+doneModalContainer.append(doneModalTitle, doneModalBtnContainer);
+
+doneModalBtnContainer.append(doneModalYesBtn, doneModalNoBtn);
+
+
+doneModalNoBtn.innerText = 'No';
+doneModalYesBtn.innerText = 'Yes';
+
+doneModalContainer.classList.add('modalDoneContainer');
+doneModalTitle.classList.add('doneModalTitle');
+doneModalBtnContainer.classList.add('doneModalBtnContainer');
+doneModalYesBtn.classList.add('doneModalYesBtn');
+doneModalNoBtn.classList.add('doneModalNoBtn');
+
+doneModalTitle.innerText = 'Are you sure?'
+
+doneBlockBtn.addEventListener('click', () => {
+    if (!doneArr.length) { return }
+
+    showAddModal(doneModalContainer);
+    hideAddModal(modalContainer);
+
+
+    doneModalNoBtn.addEventListener('click', () => {
+        hideAddModal(doneModalContainer);
+    });
+
+    doneModalYesBtn.addEventListener('click', () => {
+        doneBlockContainer.innerHTML = '';
+        doneArr.length = 0;
+        updateLocalStorage(todoArr, progressArr, doneArr);
+        getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
+        hideAddModal(doneModalContainer);
+    });
+});
+
+
+
 
 
 
