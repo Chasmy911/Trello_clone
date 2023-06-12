@@ -651,6 +651,7 @@ modalAddBtn.classList.add("modalAddBtn");
 todoBlockBtn.addEventListener("click", ()=>{
     (0, _helperJs.showAddModal)(modalContainer);
     (0, _helperJs.hideAddModal)(doneModalContainer);
+    (0, _helperJs.hideAddModal)(lengthModalContainer);
 });
 modalCancelBtn.addEventListener("click", ()=>{
     modalTitle.value = "";
@@ -702,13 +703,20 @@ const todoBtnFunction = (itemBlock)=>{
     });
     itemBlock.addEventListener("click", (event)=>{
         if (event.target.dataset.name === "moveToProgress") {
-            const todoID = itemBlock.dataset.todoid;
-            event.currentTarget.remove();
-            let item = todoArr.find((todo)=>+todoID === +todo.id);
-            todoArr = todoArr.filter((todo)=>+todoID !== +todo.id);
-            (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
-            handleProgressTodo(item);
-            (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+            if (progressArr.length > 3) {
+                (0, _helperJs.showAddModal)(lengthModalContainer);
+                (0, _helperJs.hideAddModal)(doneModalContainer);
+                (0, _helperJs.hideAddModal)(modalContainer);
+            } else {
+                const todoID = itemBlock.dataset.todoid;
+                event.currentTarget.remove();
+                let item = todoArr.find((todo)=>+todoID === +todo.id);
+                todoArr = todoArr.filter((todo)=>+todoID !== +todo.id);
+                (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
+                handleProgressTodo(item);
+                (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+                console.log(progressArr.length);
+            }
         }
     });
 };
@@ -732,7 +740,6 @@ const progressBtnFunction = (itemBlock)=>{
             event.currentTarget.remove();
             let item = progressArr.find((todo)=>+todoID === +todo.id);
             const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(doneBlockContainer, item);
-            // changeStyletoDone(itemBlock);
             doneArr.push(item);
             doneBtnFunction(itemContainer);
             progressArr = progressArr.filter((todo)=>+todoID !== +todo.id);
@@ -773,6 +780,7 @@ doneBlockBtn.addEventListener("click", ()=>{
     if (!doneArr.length) return;
     (0, _helperJs.showAddModal)(doneModalContainer);
     (0, _helperJs.hideAddModal)(modalContainer);
+    (0, _helperJs.hideAddModal)(lengthModalContainer);
     doneModalNoBtn.addEventListener("click", ()=>{
         (0, _helperJs.hideAddModal)(doneModalContainer);
     });
@@ -783,6 +791,20 @@ doneBlockBtn.addEventListener("click", ()=>{
         (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
         (0, _helperJs.hideAddModal)(doneModalContainer);
     });
+});
+//length modal
+const lengthModalContainer = document.createElement("div");
+const lengthModalTitle = document.createElement("div");
+const lengthModalBtn = document.createElement("button");
+modalBlockContainer.append(lengthModalContainer);
+lengthModalContainer.append(lengthModalTitle, lengthModalBtn);
+lengthModalBtn.innerText = "Ok";
+lengthModalContainer.classList.add("lengthModalContainer");
+lengthModalTitle.classList.add("lengthModalTitle");
+lengthModalBtn.classList.add("lengthModalBtn");
+lengthModalTitle.innerText = "You can't do more than 6 things at the same time";
+lengthModalBtn.addEventListener("click", ()=>{
+    (0, _helperJs.hideAddModal)(lengthModalContainer);
 });
 if (savedTodoArr.length) for (let todo of savedTodoArr){
     todoArr.push(todo);

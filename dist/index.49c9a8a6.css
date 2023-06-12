@@ -24,7 +24,7 @@
   padding: 5px 0;
 }
 
-.modalCancelBtn, .modalAddBtn, .doneModalYesBtn, .doneModalNoBtn {
+.modalCancelBtn, .modalAddBtn, .doneModalYesBtn, .doneModalNoBtn, .lengthModalBtn {
   width: 30%;
   height: 30px;
   text-align: center;
@@ -33,7 +33,7 @@
   padding: 5px 0;
 }
 
-.modalDoneContainer, .modalContainer {
+.modalDoneContainer, .lengthModalContainer, .modalContainer {
   width: 34%;
   background-color: #76638e;
   border-radius: 25px;
@@ -207,7 +207,7 @@ button {
   display: none;
 }
 
-.modalDoneContainer {
+.modalDoneContainer, .lengthModalContainer {
   background-color: #c09d9d;
   display: none;
 }
@@ -218,6 +218,15 @@ button {
 
 .modalTitle, .doneModalTitle {
   width: 55%;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.lengthModalTitle {
+  width: 100%;
   text-align: center;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -238,6 +247,11 @@ button {
 .modalBtnContainer, .doneModalBtnContainer {
   justify-content: space-around;
   display: flex;
+}
+
+.lengthModalBtn {
+  margin: 0 auto;
+  display: block;
 }
 
 .modalCancelBtn:hover, .modalAddBtn:hover, .doneModalYesBtn:hover, .doneModalNoBtn:hover {
