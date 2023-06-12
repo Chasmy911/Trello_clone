@@ -942,6 +942,7 @@ const renderTodoItem = (container, obj)=>{
         delBtn.setAttribute("data-name", "moveToDone");
     } else {
         btnContainer.append(delBtn);
+        itemBlock.classList.add("moveToDoneStyle");
         itemBlockMain.append(descr);
         delBtn.innerText = "DELETE";
     }

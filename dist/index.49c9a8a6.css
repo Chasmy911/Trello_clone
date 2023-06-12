@@ -284,8 +284,12 @@ button {
   padding: 5px;
 }
 
-.moveToProgressStyle, .moveToDoneStyle {
+.moveToProgressStyle {
   background-color: #e9f4bd;
+}
+
+.moveToDoneStyle {
+  background-color: #07979f;
 }
 
 .footer {

@@ -282,9 +282,6 @@ doneBlockBtn.addEventListener('click', () => {
 
 
 
-
-
-
 if (savedTodoArr.length) {
     for (let todo of savedTodoArr) {
         todoArr.push(todo);
