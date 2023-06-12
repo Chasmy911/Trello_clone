@@ -703,7 +703,7 @@ const todoBtnFunction = (itemBlock)=>{
     });
     itemBlock.addEventListener("click", (event)=>{
         if (event.target.dataset.name === "moveToProgress") {
-            if (progressArr.length > 3) {
+            if (progressArr.length > 5) {
                 (0, _helperJs.showAddModal)(lengthModalContainer);
                 (0, _helperJs.hideAddModal)(doneModalContainer);
                 (0, _helperJs.hideAddModal)(modalContainer);

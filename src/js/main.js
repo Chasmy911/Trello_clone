@@ -120,8 +120,6 @@ todoBlockHeaderAmount.innerText = todoArr.length;
 progressBlockHeaderAmount.innerText = progressArr.length;
 doneBlockHeaderAmount.innerText = doneArr.length;
 
-
-
 const handleTodo = () => {
     const todoItem = createTodoItem(modalTitle.value, modalDescr.value);
     if (modalTitle.value && modalDescr.value) {
@@ -151,9 +149,7 @@ const handleProgressTodo = (todoItem) => {
     updateLocalStorage(todoArr, progressArr, doneArr);
 }
 
-
 modalAddBtn.addEventListener('click', handleTodo);
-
 
 const todoBtnFunction = (itemBlock) => {
     itemBlock.addEventListener('click', (event) => {
@@ -169,7 +165,7 @@ const todoBtnFunction = (itemBlock) => {
 
     itemBlock.addEventListener('click', (event) => {
         if (event.target.dataset.name === 'moveToProgress') {
-            if (progressArr.length > 3) {
+            if (progressArr.length > 5) {
                 showAddModal(lengthModalContainer);
                 hideAddModal(doneModalContainer);
                 hideAddModal(modalContainer);
@@ -189,8 +185,6 @@ const todoBtnFunction = (itemBlock) => {
         }
     })
 }
-
-
 
 
 const progressBtnFunction = (itemBlock) => {
@@ -307,37 +301,9 @@ lengthModalBtn.classList.add('lengthModalBtn');
 
 lengthModalTitle.innerText = 'You can\'t do more than 6 things at the same time'
 
-
-
-
 lengthModalBtn.addEventListener('click', () => {
     hideAddModal(lengthModalContainer);
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if (savedTodoArr.length) {
     for (let todo of savedTodoArr) {
