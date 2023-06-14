@@ -24,7 +24,7 @@
   padding: 5px 0;
 }
 
-.modalCancelBtn, .modalAddBtn, .doneModalYesBtn, .doneModalNoBtn, .lengthModalBtn {
+.modalCancelBtn, .modalAddBtn, .doneModalYesBtn, .doneModalNoBtn, .lengthModalBtn, .editModalCancelBtn, .editModalAddBtn {
   width: 30%;
   height: 30px;
   text-align: center;
@@ -33,7 +33,7 @@
   padding: 5px 0;
 }
 
-.modalDoneContainer, .lengthModalContainer, .modalContainer {
+.modalDoneContainer, .lengthModalContainer, .modalContainer, .editModalContainer {
   width: 34%;
   background-color: #76638e;
   border-radius: 25px;
@@ -203,7 +203,7 @@ button {
   display: flex;
 }
 
-.modalContainer {
+.modalContainer, .editModalContainer {
   display: none;
 }
 
@@ -216,7 +216,7 @@ button {
   display: block;
 }
 
-.modalTitle, .doneModalTitle {
+.modalTitle, .doneModalTitle, .editModalTitle {
   width: 55%;
   text-align: center;
   border-radius: 10px;
@@ -234,7 +234,7 @@ button {
   font-size: 16px;
 }
 
-.modalDescr {
+.modalDescr, .editModalDescr {
   width: 100%;
   min-height: 100px;
   resize: none;
@@ -244,7 +244,7 @@ button {
   font-size: 16px;
 }
 
-.modalBtnContainer, .doneModalBtnContainer {
+.modalBtnContainer, .doneModalBtnContainer, .editModalBtnContainer {
   justify-content: space-around;
   display: flex;
 }

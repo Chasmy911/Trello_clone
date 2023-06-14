@@ -29,7 +29,7 @@ export const renderTodoItem = (container, obj) => {
     delBtn.setAttribute('data-name', 'closeBtn');
     itemBlock.setAttribute('data-todoid', obj.id);
     moveToProgressBtn.setAttribute('data-name', 'moveToProgress');
-
+    editBtn.setAttribute('data-name', 'editBtn');
 
     itemBlock.classList.add('itemBlock');
     itemBlockHeader.classList.add('itemBlockHeader');
