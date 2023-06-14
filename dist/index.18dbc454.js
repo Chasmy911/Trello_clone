@@ -658,6 +658,36 @@ modalCancelBtn.addEventListener("click", ()=>{
     modalDescr.value = "";
     (0, _helperJs.hideAddModal)(modalContainer);
 });
+// edit modal
+const editModalContainer = document.createElement("div");
+const editModalBtnContainer = document.createElement("div");
+const editModalTitle = document.createElement("input");
+const editModalDescr = document.createElement("textarea");
+const editModalUser = document.createElement("div");
+const editModalCancelBtn = document.createElement("button");
+const editModalAddBtn = document.createElement("button");
+editModalTitle.setAttribute("placeholder", "Title");
+editModalDescr.setAttribute("placeholder", "Description");
+modalBlockContainer.append(editModalContainer);
+editModalContainer.append(editModalTitle, editModalDescr, editModalBtnContainer);
+editModalBtnContainer.append(editModalUser, editModalCancelBtn, editModalAddBtn);
+editModalUser.innerText = "Select user";
+editModalCancelBtn.innerText = "Cancel";
+editModalAddBtn.innerText = "Confirm";
+editModalContainer.classList.add("editModalContainer");
+editModalTitle.classList.add("editModalTitle");
+editModalDescr.classList.add("editModalDescr");
+editModalBtnContainer.classList.add("editModalBtnContainer");
+editModalCancelBtn.classList.add("editModalCancelBtn");
+editModalAddBtn.classList.add("editModalAddBtn");
+// todoBlockBtn.addEventListener('click', () => {
+//     showAddModal(editModalContainer);
+//     hideAddModal(doneModalContainer);
+//     hideAddModal(lengthModalContainer);
+// });
+editModalCancelBtn.addEventListener("click", ()=>{
+    (0, _helperJs.hideAddModal)(editModalContainer);
+});
 //create todo
 let todoArr = [];
 let progressArr = [];
@@ -690,7 +720,6 @@ const handleProgressTodo = (todoItem)=>{
     (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
     (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
 };
-modalAddBtn.addEventListener("click", handleTodo);
 const todoBtnFunction = (itemBlock)=>{
     itemBlock.addEventListener("click", (event)=>{
         if (event.target.dataset.name === "closeBtn") {
@@ -715,11 +744,28 @@ const todoBtnFunction = (itemBlock)=>{
                 (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
                 handleProgressTodo(item);
                 (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
-                console.log(progressArr.length);
             }
         }
     });
+    itemBlock.addEventListener("click", (event)=>{
+        if (event.target.dataset.name === "editBtn") {
+            const todoID = itemBlock.dataset.todoid;
+            let todoItem = todoArr.find((todo)=>+todoID === +todo.id);
+            (0, _helperJs.showAddModal)(editModalContainer);
+            editModalTitle.value = todoItem.title;
+            editModalDescr.value = todoItem.descr;
+            editModalAddBtn.addEventListener("click", ()=>{
+                todoItem.title = editModalTitle.value;
+                todoItem.descr = editModalDescr.value;
+                todoItem.id = todoID;
+                (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
+                (0, _helperJs.hideAddModal)(editModalContainer);
+                location.reload();
+            });
+        }
+    });
 };
+modalAddBtn.addEventListener("click", handleTodo);
 const progressBtnFunction = (itemBlock)=>{
     itemBlock.addEventListener("click", (event)=>{
         if (event.target.dataset.name === "moveToTodo") {
@@ -940,6 +986,7 @@ const renderTodoItem = (container, obj)=>{
     delBtn.setAttribute("data-name", "closeBtn");
     itemBlock.setAttribute("data-todoid", obj.id);
     moveToProgressBtn.setAttribute("data-name", "moveToProgress");
+    editBtn.setAttribute("data-name", "editBtn");
     itemBlock.classList.add("itemBlock");
     itemBlockHeader.classList.add("itemBlockHeader");
     title.classList.add("title");

@@ -1,4 +1,4 @@
-.modalContainer {
+.modalContainer, .editModalContainer {
     @extend %modal;
     display: none;
 }
@@ -16,7 +16,8 @@
 
 
 .modalTitle,
-.doneModalTitle {
+.doneModalTitle,
+.editModalTitle {
     width: 55%;
     margin-bottom: 15px;
     padding: 5px;
@@ -34,7 +35,8 @@
     border-radius: 10px;
 }
 
-.modalDescr {
+.modalDescr,
+.editModalDescr {
     width: 100%;
     min-height: 100px;
     padding: 10px 15px;
@@ -45,7 +47,8 @@
 }
 
 .modalBtnContainer,
-.doneModalBtnContainer {
+.doneModalBtnContainer,
+.editModalBtnContainer {
     display: flex;
     justify-content: space-around;
 }
@@ -54,7 +57,9 @@
 .modalAddBtn,
 .doneModalYesBtn,
 .doneModalNoBtn,
-.lengthModalBtn  {
+.lengthModalBtn,
+.editModalCancelBtn,
+.editModalAddBtn  {
     @extend %modalbtn
 }
 
