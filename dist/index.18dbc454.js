@@ -631,15 +631,33 @@ const modalContainer = document.createElement("div");
 const modalBtnContainer = document.createElement("div");
 const modalTitle = document.createElement("input");
 const modalDescr = document.createElement("textarea");
-const modalUser = document.createElement("div");
+const modalUser = document.createElement("select");
 const modalCancelBtn = document.createElement("button");
 const modalAddBtn = document.createElement("button");
 modalTitle.setAttribute("placeholder", "Title");
 modalDescr.setAttribute("placeholder", "Description");
+const renderUser = (valueName)=>{
+    const nameOpt = document.createElement("option");
+    nameOpt.innerText = valueName;
+    nameOpt.value = valueName;
+    const nameOpt2 = document.createElement("option");
+    nameOpt2.innerText = valueName;
+    nameOpt2.value = valueName;
+    modalUser.append(nameOpt);
+    editModalUser.append(nameOpt2);
+    return nameOpt;
+};
+const getUsers = ()=>{
+    fetch("https://jsonplaceholder.typicode.com/users").then((res)=>res.json()).then((users)=>{
+        users.forEach((people)=>{
+            renderUser(people.username);
+        });
+    });
+};
+getUsers();
 modalBlockContainer.append(modalContainer);
 modalContainer.append(modalTitle, modalDescr, modalBtnContainer);
 modalBtnContainer.append(modalUser, modalCancelBtn, modalAddBtn);
-modalUser.innerText = "Select user";
 modalCancelBtn.innerText = "Cancel";
 modalAddBtn.innerText = "Confirm";
 modalContainer.classList.add("modalContainer");
@@ -663,7 +681,7 @@ const editModalContainer = document.createElement("div");
 const editModalBtnContainer = document.createElement("div");
 const editModalTitle = document.createElement("input");
 const editModalDescr = document.createElement("textarea");
-const editModalUser = document.createElement("div");
+const editModalUser = document.createElement("select");
 const editModalCancelBtn = document.createElement("button");
 const editModalAddBtn = document.createElement("button");
 editModalTitle.setAttribute("placeholder", "Title");
@@ -671,7 +689,6 @@ editModalDescr.setAttribute("placeholder", "Description");
 modalBlockContainer.append(editModalContainer);
 editModalContainer.append(editModalTitle, editModalDescr, editModalBtnContainer);
 editModalBtnContainer.append(editModalUser, editModalCancelBtn, editModalAddBtn);
-editModalUser.innerText = "Select user";
 editModalCancelBtn.innerText = "Cancel";
 editModalAddBtn.innerText = "Confirm";
 editModalContainer.classList.add("editModalContainer");
@@ -680,11 +697,6 @@ editModalDescr.classList.add("editModalDescr");
 editModalBtnContainer.classList.add("editModalBtnContainer");
 editModalCancelBtn.classList.add("editModalCancelBtn");
 editModalAddBtn.classList.add("editModalAddBtn");
-// todoBlockBtn.addEventListener('click', () => {
-//     showAddModal(editModalContainer);
-//     hideAddModal(doneModalContainer);
-//     hideAddModal(lengthModalContainer);
-// });
 editModalCancelBtn.addEventListener("click", ()=>{
     (0, _helperJs.hideAddModal)(editModalContainer);
 });
@@ -699,7 +711,7 @@ todoBlockHeaderAmount.innerText = todoArr.length;
 progressBlockHeaderAmount.innerText = progressArr.length;
 doneBlockHeaderAmount.innerText = doneArr.length;
 const handleTodo = ()=>{
-    const todoItem = (0, _createtodoitemJs.createTodoItem)(modalTitle.value, modalDescr.value);
+    const todoItem = (0, _createtodoitemJs.createTodoItem)(modalTitle.value, modalDescr.value, modalUser.value);
     if (modalTitle.value && modalDescr.value) {
         modalTitle.value = "";
         modalDescr.value = "";
@@ -754,10 +766,12 @@ const todoBtnFunction = (itemBlock)=>{
             (0, _helperJs.showAddModal)(editModalContainer);
             editModalTitle.value = todoItem.title;
             editModalDescr.value = todoItem.descr;
+            editModalUser.value = todoItem.workUser;
             editModalAddBtn.addEventListener("click", ()=>{
                 todoItem.title = editModalTitle.value;
                 todoItem.descr = editModalDescr.value;
                 todoItem.id = todoID;
+                todoItem.workUser = editModalUser.value;
                 (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
                 (0, _helperJs.hideAddModal)(editModalContainer);
                 location.reload();
@@ -944,7 +958,7 @@ const changeStyletoDone = (itemBlock)=>{
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createTodoItem", ()=>createTodoItem);
-const createTodoItem = (modalTitleValue, modalDescrValue)=>{
+const createTodoItem = (modalTitleValue, modalDescrValue, willWork)=>{
     if (!modalTitleValue || !modalDescrValue) return;
     const date = new Date();
     const title = modalTitleValue;
@@ -953,6 +967,7 @@ const createTodoItem = (modalTitleValue, modalDescrValue)=>{
         title,
         descr,
         data: date.toLocaleDateString(),
+        workUser: willWork,
         id: Date.now()
     };
     return todoItem;
@@ -981,7 +996,7 @@ const renderTodoItem = (container, obj)=>{
     itemBlockFooter.append(user, time);
     title.innerText = obj.title;
     descr.innerText = obj.descr;
-    user.innerText = "User1";
+    user.innerText = obj.workUser;
     time.innerText = obj.data;
     delBtn.setAttribute("data-name", "closeBtn");
     itemBlock.setAttribute("data-todoid", obj.id);

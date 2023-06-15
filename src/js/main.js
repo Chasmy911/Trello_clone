@@ -1,5 +1,5 @@
 import { getTime } from "./headertime.js";
-import { showAddModal, hideAddModal, updateLocalStorage, getAmount, changeStyletoProgress, changeStyletoDone } from "./helper.js";
+import { showAddModal, hideAddModal, updateLocalStorage, getAmount, changeStyletoProgress} from "./helper.js";
 import { createTodoItem } from "./createtodoitem.js";
 import { renderTodoItem } from "./rendertodoitem.js";
 
@@ -73,18 +73,41 @@ const modalContainer = document.createElement('div');
 const modalBtnContainer = document.createElement('div');
 const modalTitle = document.createElement('input');
 const modalDescr = document.createElement('textarea');
-const modalUser = document.createElement('div');
+const modalUser = document.createElement('select');
 const modalCancelBtn = document.createElement('button');
 const modalAddBtn = document.createElement('button');
 
 modalTitle.setAttribute('placeholder', 'Title');
 modalDescr.setAttribute('placeholder', 'Description');
 
+const renderUser = (valueName) => {
+    const nameOpt = document.createElement('option');
+    nameOpt.innerText = valueName;
+    nameOpt.value = valueName;
+
+    const nameOpt2 = document.createElement('option');
+    nameOpt2.innerText = valueName;
+    nameOpt2.value = valueName;
+
+    modalUser.append(nameOpt);
+    editModalUser.append(nameOpt2);
+    return nameOpt
+}
+
+
+const getUsers = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(users => { users.forEach(people => { renderUser(people.username) }) });
+};
+
+getUsers();
+
+
 modalBlockContainer.append(modalContainer);
 modalContainer.append(modalTitle, modalDescr, modalBtnContainer);
 modalBtnContainer.append(modalUser, modalCancelBtn, modalAddBtn);
 
-modalUser.innerText = 'Select user';
 modalCancelBtn.innerText = 'Cancel';
 modalAddBtn.innerText = 'Confirm';
 
@@ -108,15 +131,13 @@ modalCancelBtn.addEventListener('click', () => {
 });
 
 
-
-
 // edit modal
 
 const editModalContainer = document.createElement('div');
 const editModalBtnContainer = document.createElement('div');
 const editModalTitle = document.createElement('input');
 const editModalDescr = document.createElement('textarea');
-const editModalUser = document.createElement('div');
+const editModalUser = document.createElement('select');
 const editModalCancelBtn = document.createElement('button');
 const editModalAddBtn = document.createElement('button');
 
@@ -127,7 +148,7 @@ modalBlockContainer.append(editModalContainer);
 editModalContainer.append(editModalTitle, editModalDescr, editModalBtnContainer);
 editModalBtnContainer.append(editModalUser, editModalCancelBtn, editModalAddBtn);
 
-editModalUser.innerText = 'Select user';
+
 editModalCancelBtn.innerText = 'Cancel';
 editModalAddBtn.innerText = 'Confirm';
 
@@ -138,38 +159,10 @@ editModalBtnContainer.classList.add('editModalBtnContainer');
 editModalCancelBtn.classList.add('editModalCancelBtn');
 editModalAddBtn.classList.add('editModalAddBtn');
 
-// todoBlockBtn.addEventListener('click', () => {
-//     showAddModal(editModalContainer);
-//     hideAddModal(doneModalContainer);
-//     hideAddModal(lengthModalContainer);
-// });
-
 editModalCancelBtn.addEventListener('click', () => {
- 
+
     hideAddModal(editModalContainer);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //create todo
@@ -186,7 +179,7 @@ progressBlockHeaderAmount.innerText = progressArr.length;
 doneBlockHeaderAmount.innerText = doneArr.length;
 
 const handleTodo = () => {
-    const todoItem = createTodoItem(modalTitle.value, modalDescr.value);
+    const todoItem = createTodoItem(modalTitle.value, modalDescr.value, modalUser.value);
     if (modalTitle.value && modalDescr.value) {
         modalTitle.value = '';
         modalDescr.value = '';
@@ -213,8 +206,6 @@ const handleProgressTodo = (todoItem) => {
     getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
     updateLocalStorage(todoArr, progressArr, doneArr);
 }
-
-
 
 
 const todoBtnFunction = (itemBlock) => {
@@ -251,7 +242,6 @@ const todoBtnFunction = (itemBlock) => {
     })
 
 
-
     itemBlock.addEventListener('click', (event) => {
         if (event.target.dataset.name === 'editBtn') {
             const todoID = itemBlock.dataset.todoid;
@@ -260,31 +250,22 @@ const todoBtnFunction = (itemBlock) => {
             showAddModal(editModalContainer);
             editModalTitle.value = todoItem.title;
             editModalDescr.value = todoItem.descr;
+            editModalUser.value= todoItem.workUser;
 
             editModalAddBtn.addEventListener('click', () => {
                 todoItem.title = editModalTitle.value;
                 todoItem.descr = editModalDescr.value;
                 todoItem.id = todoID;
-
+                todoItem.workUser = editModalUser.value
                 updateLocalStorage(todoArr, progressArr, doneArr);
                 hideAddModal(editModalContainer);
-                location.reload() 
+                location.reload()
             });
-
-
-
-
         }
     })
-
-
-
 }
 
 modalAddBtn.addEventListener('click', handleTodo);
-
-
-
 
 
 const progressBtnFunction = (itemBlock) => {
@@ -335,7 +316,6 @@ const doneBtnFunction = (itemBlock) => {
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
     })
-
 }
 
 // done modal btn 

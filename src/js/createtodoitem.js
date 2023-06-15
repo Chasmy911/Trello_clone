@@ -1,4 +1,4 @@
-export const createTodoItem = (modalTitleValue, modalDescrValue) => {
+export const createTodoItem = (modalTitleValue, modalDescrValue, willWork) => {
     if(!modalTitleValue || !modalDescrValue) {return}
 
     const date = new Date();
@@ -8,6 +8,7 @@ export const createTodoItem = (modalTitleValue, modalDescrValue) => {
         title,
         descr,
         data: date.toLocaleDateString(),
+        workUser: willWork,
         id: Date.now(),
     }
 

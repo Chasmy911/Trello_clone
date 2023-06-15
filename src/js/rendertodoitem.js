@@ -23,7 +23,7 @@ export const renderTodoItem = (container, obj) => {
     title.innerText = obj.title;
 
     descr.innerText = obj.descr;
-    user.innerText = 'User1';
+    user.innerText = obj.workUser;
     time.innerText = obj.data;
 
     delBtn.setAttribute('data-name', 'closeBtn');
