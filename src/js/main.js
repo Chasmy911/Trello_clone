@@ -80,6 +80,8 @@ const modalAddBtn = document.createElement('button');
 modalTitle.setAttribute('placeholder', 'Title');
 modalDescr.setAttribute('placeholder', 'Description');
 
+modalUser.classList.add('select');
+
 const renderUser = (valueName) => {
     const nameOpt = document.createElement('option');
     nameOpt.innerText = valueName;
@@ -143,6 +145,8 @@ const editModalAddBtn = document.createElement('button');
 
 editModalTitle.setAttribute('placeholder', 'Title');
 editModalDescr.setAttribute('placeholder', 'Description');
+
+editModalUser.classList.add('select');
 
 modalBlockContainer.append(editModalContainer);
 editModalContainer.append(editModalTitle, editModalDescr, editModalBtnContainer);

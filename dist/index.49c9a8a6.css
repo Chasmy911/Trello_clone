@@ -8,9 +8,10 @@
   display: flex;
 }
 
-@media (width <= 600px) {
+@media (width <= 700px) {
   .doneBlock, .progressBlock, .todoBlock {
     width: 80%;
+    min-height: 20vh;
     margin: 10px auto;
   }
 }
@@ -33,6 +34,12 @@
   padding: 5px 0;
 }
 
+@media (width <= 700px) {
+  .modalCancelBtn, .modalAddBtn, .doneModalYesBtn, .doneModalNoBtn, .lengthModalBtn, .editModalCancelBtn, .editModalAddBtn {
+    border-radius: 10px;
+  }
+}
+
 .modalDoneContainer, .lengthModalContainer, .modalContainer, .editModalContainer {
   width: 34%;
   background-color: #76638e;
@@ -43,6 +50,21 @@
   position: absolute;
   top: 33%;
   left: 33%;
+}
+
+@media (width <= 700px) {
+  .modalDoneContainer, .lengthModalContainer, .modalContainer, .editModalContainer {
+    width: 60%;
+    margin: 10px auto;
+    left: 20%;
+  }
+}
+
+@media (width <= 450px) {
+  .modalDoneContainer, .lengthModalContainer, .modalContainer, .editModalContainer {
+    width: 80%;
+    left: 10%;
+  }
 }
 
 * {
@@ -125,7 +147,7 @@ button {
   display: flex;
 }
 
-@media (width <= 600px) {
+@media (width <= 700px) {
   #main_block {
     flex-direction: column;
   }
@@ -217,7 +239,6 @@ button {
 }
 
 .modalTitle, .doneModalTitle, .editModalTitle {
-  width: 55%;
   text-align: center;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -256,6 +277,12 @@ button {
 
 .modalCancelBtn:hover, .modalAddBtn:hover, .doneModalYesBtn:hover, .doneModalNoBtn:hover {
   background-color: #aaa5a5;
+}
+
+.select {
+  width: 40%;
+  border-radius: 10px;
+  margin-right: 5px;
 }
 
 .itemBlock {

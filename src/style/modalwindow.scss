@@ -1,4 +1,5 @@
-.modalContainer, .editModalContainer {
+.modalContainer,
+.editModalContainer {
     @extend %modal;
     display: none;
 }
@@ -18,7 +19,6 @@
 .modalTitle,
 .doneModalTitle,
 .editModalTitle {
-    width: 55%;
     margin-bottom: 15px;
     padding: 5px;
     text-align: center;
@@ -59,13 +59,13 @@
 .doneModalNoBtn,
 .lengthModalBtn,
 .editModalCancelBtn,
-.editModalAddBtn  {
+.editModalAddBtn {
     @extend %modalbtn
 }
 
 .lengthModalBtn {
     display: block;
-   margin: 0 auto
+    margin: 0 auto
 }
 
 
@@ -74,4 +74,10 @@
 .doneModalYesBtn:hover,
 .doneModalNoBtn:hover {
     background-color: #aaa5a5;
+}
+
+.select {
+    width: 40%;
+    margin-right: 5px;
+    border-radius: 10px;
 }
