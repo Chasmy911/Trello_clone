@@ -1,9 +1,7 @@
 import { getTime } from "./headertime.js";
 import { showAddModal, hideAddModal, updateLocalStorage, getAmount, changeStyletoProgress} from "./helper.js";
 import { createTodoItem } from "./createtodoitem.js";
-import { renderTodoItem } from "./rendertodoitem.js";
-
-// header time
+import { renderTodoItem, renderUser } from "./render.js";
 
 getTime();
 
@@ -82,25 +80,11 @@ modalDescr.setAttribute('placeholder', 'Description');
 
 modalUser.classList.add('select');
 
-const renderUser = (valueName) => {
-    const nameOpt = document.createElement('option');
-    nameOpt.innerText = valueName;
-    nameOpt.value = valueName;
-
-    const nameOpt2 = document.createElement('option');
-    nameOpt2.innerText = valueName;
-    nameOpt2.value = valueName;
-
-    modalUser.append(nameOpt);
-    editModalUser.append(nameOpt2);
-    return nameOpt
-}
-
 
 const getUsers = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(res => res.json())
-        .then(users => { users.forEach(people => { renderUser(people.username) }) });
+        .then(users => { users.forEach(people => { renderUser(people.username, modalUser, editModalUser) }) });
 };
 
 getUsers();
@@ -152,7 +136,6 @@ modalBlockContainer.append(editModalContainer);
 editModalContainer.append(editModalTitle, editModalDescr, editModalBtnContainer);
 editModalBtnContainer.append(editModalUser, editModalCancelBtn, editModalAddBtn);
 
-
 editModalCancelBtn.innerText = 'Cancel';
 editModalAddBtn.innerText = 'Confirm';
 
@@ -164,10 +147,8 @@ editModalCancelBtn.classList.add('editModalCancelBtn');
 editModalAddBtn.classList.add('editModalAddBtn');
 
 editModalCancelBtn.addEventListener('click', () => {
-
     hideAddModal(editModalContainer);
 });
-
 
 //create todo
 
@@ -241,7 +222,6 @@ const todoBtnFunction = (itemBlock) => {
                 handleProgressTodo(item);
                 updateLocalStorage(todoArr, progressArr, doneArr);
             }
-
         }
     })
 
@@ -270,7 +250,6 @@ const todoBtnFunction = (itemBlock) => {
 }
 
 modalAddBtn.addEventListener('click', handleTodo);
-
 
 const progressBtnFunction = (itemBlock) => {
     itemBlock.addEventListener('click', (event) => {
@@ -371,7 +350,6 @@ doneBlockBtn.addEventListener('click', () => {
 const lengthModalContainer = document.createElement('div');
 const lengthModalTitle = document.createElement('div');
 const lengthModalBtn = document.createElement('button');
-
 
 modalBlockContainer.append(lengthModalContainer);
 lengthModalContainer.append(lengthModalTitle, lengthModalBtn);

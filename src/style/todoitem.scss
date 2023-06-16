@@ -17,8 +17,13 @@
     padding: 5px;
 }
 
+.itemBlockMain {
+    color:rgb(56, 45, 63)
+}
+
 .title {
     max-width: 60%;
+    font-weight: 700;
 }
 
 .btnContainer {
@@ -36,18 +41,18 @@
 .editBtn:hover,
 .delBtn:hover,
 .moveToProgressBtn:hover {
-  color: red;
-  background-color: antiquewhite;
+    color: red;
+    background-color: antiquewhite;
 }
 
 .moveToProgressBtn {
     padding: 5px;
 }
 
-.moveToProgressStyle  {
+.moveToProgressStyle {
     background-color: $progressitemcolor;
 }
 
-.moveToDoneStyle  {
+.moveToDoneStyle {
     background-color: $doneitemcolor;
 }

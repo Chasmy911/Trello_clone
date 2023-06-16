@@ -5,3 +5,6 @@ export const getTime = () => {
     timeContainer.textContent = currentTime;
     setTimeout(getTime, 1000);
 };
+
+
+

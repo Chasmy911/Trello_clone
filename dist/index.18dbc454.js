@@ -577,8 +577,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var _headertimeJs = require("./headertime.js");
 var _helperJs = require("./helper.js");
 var _createtodoitemJs = require("./createtodoitem.js");
-var _rendertodoitemJs = require("./rendertodoitem.js");
-// header time
+var _renderJs = require("./render.js");
 (0, _headertimeJs.getTime)();
 // create main block
 const mainContainer = document.getElementById("main_block");
@@ -637,21 +636,10 @@ const modalAddBtn = document.createElement("button");
 modalTitle.setAttribute("placeholder", "Title");
 modalDescr.setAttribute("placeholder", "Description");
 modalUser.classList.add("select");
-const renderUser = (valueName)=>{
-    const nameOpt = document.createElement("option");
-    nameOpt.innerText = valueName;
-    nameOpt.value = valueName;
-    const nameOpt2 = document.createElement("option");
-    nameOpt2.innerText = valueName;
-    nameOpt2.value = valueName;
-    modalUser.append(nameOpt);
-    editModalUser.append(nameOpt2);
-    return nameOpt;
-};
 const getUsers = ()=>{
     fetch("https://jsonplaceholder.typicode.com/users").then((res)=>res.json()).then((users)=>{
         users.forEach((people)=>{
-            renderUser(people.username);
+            (0, _renderJs.renderUser)(people.username, modalUser, editModalUser);
         });
     });
 };
@@ -721,14 +709,14 @@ const handleTodo = ()=>{
     }
     if (!todoItem) return;
     todoArr.push(todoItem);
-    const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todoItem);
+    const itemContainer = (0, _renderJs.renderTodoItem)(todoBlockContainer, todoItem);
     todoBtnFunction(itemContainer);
     (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
     (0, _helperJs.updateLocalStorage)(todoArr, progressArr, doneArr);
 };
 const handleProgressTodo = (todoItem)=>{
     progressArr.push(todoItem);
-    const progressitemContainer = (0, _rendertodoitemJs.renderTodoItem)(progressBlockContainer, todoItem);
+    const progressitemContainer = (0, _renderJs.renderTodoItem)(progressBlockContainer, todoItem);
     (0, _helperJs.changeStyletoProgress)(progressitemContainer);
     progressBtnFunction(progressitemContainer);
     (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
@@ -788,7 +776,7 @@ const progressBtnFunction = (itemBlock)=>{
             const todoID = itemBlock.dataset.todoid;
             event.currentTarget.remove();
             let todoItem = progressArr.find((todo)=>+todoID === +todo.id);
-            const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todoItem);
+            const itemContainer = (0, _renderJs.renderTodoItem)(todoBlockContainer, todoItem);
             todoBtnFunction(itemContainer);
             todoArr.push(todoItem);
             progressArr = progressArr.filter((todo)=>+todoID !== +todo.id);
@@ -801,7 +789,7 @@ const progressBtnFunction = (itemBlock)=>{
             const todoID = itemBlock.dataset.todoid;
             event.currentTarget.remove();
             let item = progressArr.find((todo)=>+todoID === +todo.id);
-            const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(doneBlockContainer, item);
+            const itemContainer = (0, _renderJs.renderTodoItem)(doneBlockContainer, item);
             doneArr.push(item);
             doneBtnFunction(itemContainer);
             progressArr = progressArr.filter((todo)=>+todoID !== +todo.id);
@@ -870,19 +858,19 @@ lengthModalBtn.addEventListener("click", ()=>{
 });
 if (savedTodoArr.length) for (let todo of savedTodoArr){
     todoArr.push(todo);
-    const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(todoBlockContainer, todo);
+    const itemContainer = (0, _renderJs.renderTodoItem)(todoBlockContainer, todo);
     todoBtnFunction(itemContainer);
     (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
 }
 if (savedProgressArr.length) for (let todo of savedProgressArr)handleProgressTodo(todo);
 if (savedDoneArr.length) for (let todo of savedDoneArr){
     doneArr.push(todo);
-    const itemContainer = (0, _rendertodoitemJs.renderTodoItem)(doneBlockContainer, todo);
+    const itemContainer = (0, _renderJs.renderTodoItem)(doneBlockContainer, todo);
     doneBtnFunction(itemContainer);
     (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
 }
 
-},{"./headertime.js":"aJ4Uq","./helper.js":"lVRAz","./createtodoitem.js":"kfXSB","./rendertodoitem.js":"31aQR"}],"aJ4Uq":[function(require,module,exports) {
+},{"./headertime.js":"aJ4Uq","./helper.js":"lVRAz","./createtodoitem.js":"kfXSB","./render.js":"6Nkx6"}],"aJ4Uq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getTime", ()=>getTime);
@@ -975,10 +963,11 @@ const createTodoItem = (modalTitleValue, modalDescrValue, willWork)=>{
     return todoItem;
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"31aQR":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6Nkx6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "renderTodoItem", ()=>renderTodoItem);
+parcelHelpers.export(exports, "renderUser", ()=>renderUser);
 const renderTodoItem = (container, obj)=>{
     const itemBlock = document.createElement("div");
     const itemBlockHeader = document.createElement("div");
@@ -1033,6 +1022,16 @@ const renderTodoItem = (container, obj)=>{
         delBtn.innerText = "DELETE";
     }
     return itemBlock;
+};
+const renderUser = (valueName, modal, editModal)=>{
+    const nameOpt = document.createElement("option");
+    nameOpt.innerText = valueName;
+    nameOpt.value = valueName;
+    const nameOpt2 = document.createElement("option");
+    nameOpt2.innerText = valueName;
+    nameOpt2.value = valueName;
+    modal.append(nameOpt);
+    editModal.append(nameOpt2);
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["gEwwu","1SICI"], "1SICI", "parcelRequire1fb0")

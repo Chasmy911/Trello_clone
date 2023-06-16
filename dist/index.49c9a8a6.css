@@ -131,10 +131,11 @@ button {
 }
 
 .header__time {
-  width: 100px;
+  width: 90px;
   background: #e9f2eb;
   border: 1px solid #000;
   border-radius: 5px;
+  margin: 0 auto;
   padding: 10px;
 }
 
@@ -301,8 +302,13 @@ button {
   display: flex;
 }
 
+.itemBlockMain {
+  color: #382d3f;
+}
+
 .title {
   max-width: 60%;
+  font-weight: 700;
 }
 
 .btnContainer {
