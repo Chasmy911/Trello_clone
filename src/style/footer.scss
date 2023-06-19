@@ -1,0 +1,11 @@
+.footer {
+    max-width: 1220px;
+    background-color: $headerbackground;
+    opacity: $transparence;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+}

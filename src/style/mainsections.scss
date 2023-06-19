@@ -1,0 +1,100 @@
+#main_block {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    opacity: 0.8;
+    min-height: 70vh;
+    border-radius: 20px;
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+    }
+}
+
+.todoBlock {
+    @extend %block;
+    background: $todocolor;
+
+}
+
+.progressBlock {
+    @extend %block;
+    background: $progresscolor;
+}
+
+.doneBlock {
+    @extend %block;
+    background: $donecolor;
+}
+
+.todoBlockHeader,
+.progressBlockHeader,
+.doneBlockHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    opacity: 1;
+
+    @media (max-width: 675px) {
+        font-size: 14px;
+    }
+}
+
+.todoBlockHeader {
+    background: $green;
+    border-radius: 20px 20px 0 0;
+
+}
+
+.progressBlockHeader {
+    background: $white;
+    border-radius: 20px 20px 0 0;
+}
+
+.doneBlockHeader {
+    background: $blue;
+    border-radius: 20px 20px 0 0;
+}
+
+.todoBlockBtn,
+.doneBlockBtn {
+    @extend %btn;
+}
+
+.todoBlockBtn:hover,
+.doneBlockBtn:hover {
+    font-size: 18px;
+}
+
+.todoBlockBtn {
+    background: $green;
+    border: 2px solid $green
+}
+
+.doneBlockBtn {
+    background: $blue;
+    border: 2px solid $blue;
+}
+
+.todoBlockHeaderAmount,
+.progressBlockHeaderAmount,
+.doneBlockHeaderAmount {
+    font-size: 20px;
+    font-weight: 700;
+
+    @media (max-width: 675px) {
+        font-size: 14px;
+    }
+}
+
+
+
+.todoBlockContainer,
+.progressBlockContainer,
+.doneBlockContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+}
