@@ -1,0 +1,76 @@
+$font: 'Geologica', sans-serif;
+$headerbackground: #989898;
+$todocolor: #bdeac8;
+$todoitemcolor: #5fc777;
+$progresscolor: #e0e4e1;
+$progressitemcolor: #e9f4bd;
+$donecolor: #9deff4;
+$doneitemcolor: #07979f;
+$modalcolor: #76638e;
+$green: #3ec961;
+$white: #e9f2eb;
+$blue: #7a65ff;
+$transparence: .8;
+
+
+
+%block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    border-radius: 25px;
+    flex-shrink: 0;
+
+    @media (max-width: 700px) {
+        width: 80%;
+        margin: 10px auto;
+        min-height: 20vh;
+    }
+}
+
+%btn {
+    width: 100%;
+    height: 50px;
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+%modalbtn {
+    width: 30%;
+    height: 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 0;
+
+    @media (max-width: 700px) {
+
+        border-radius: 10px;
+    }
+}
+
+%modal {
+    position: absolute;
+    width: 34%;
+    padding: 25px;
+    left: calc(50% - 34%/2);
+    top: calc(50% - 34%/2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: $modalcolor;
+
+    @media (max-width: 700px) {
+        left: 20%;
+        width: 60%;
+        margin: 10px auto;
+    }
+
+    @media (max-width: 450px) {
+        left: 10%;
+        width: 80%;
+    }
+}

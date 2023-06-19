@@ -1,0 +1,36 @@
+.header {
+    border-radius: 20px;
+    background-color: $headerbackground;
+    opacity: $transparence;
+    margin: 15px auto;
+}
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.header__logo img {
+    width: 25%;
+
+    @media (max-width: 640px) {
+        width: 55%;
+    }
+
+    @media (max-width: 380px) {
+        width: 65%;
+    }
+}
+
+.header__time {
+    margin: 0 auto;
+    width: 90px;
+    background: $white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
