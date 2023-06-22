@@ -856,6 +856,12 @@ lengthModalTitle.innerText = "You can't do more than 6 things at the same time";
 lengthModalBtn.addEventListener("click", ()=>{
     (0, _helperJs.hideAddModal)(lengthModalContainer);
 });
+if (savedDoneArr.length) for (let todo of savedDoneArr){
+    doneArr.push(todo);
+    const itemContainer = (0, _renderJs.renderTodoItem)(doneBlockContainer, todo);
+    doneBtnFunction(itemContainer);
+    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
+}
 if (savedTodoArr.length) for (let todo of savedTodoArr){
     todoArr.push(todo);
     const itemContainer = (0, _renderJs.renderTodoItem)(todoBlockContainer, todo);
@@ -863,12 +869,6 @@ if (savedTodoArr.length) for (let todo of savedTodoArr){
     (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
 }
 if (savedProgressArr.length) for (let todo of savedProgressArr)handleProgressTodo(todo);
-if (savedDoneArr.length) for (let todo of savedDoneArr){
-    doneArr.push(todo);
-    const itemContainer = (0, _renderJs.renderTodoItem)(doneBlockContainer, todo);
-    doneBtnFunction(itemContainer);
-    (0, _helperJs.getAmount)(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
-}
 
 },{"./headertime.js":"aJ4Uq","./helper.js":"lVRAz","./createtodoitem.js":"kfXSB","./render.js":"6Nkx6"}],"aJ4Uq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -1008,14 +1008,16 @@ const renderTodoItem = (container, obj)=>{
         moveToProgressBtn.innerText = ">";
         editBtn.innerText = "Edit";
         delBtn.innerText = "Delete";
-    } else if (container.classList.contains("progressBlockContainer")) {
+    }
+    if (container.classList.contains("progressBlockContainer")) {
         btnContainer.append(editBtn, delBtn);
         itemBlockMain.append(descr);
         editBtn.innerText = "BACK";
         delBtn.innerText = "COMPLETE";
         editBtn.setAttribute("data-name", "moveToTodo");
         delBtn.setAttribute("data-name", "moveToDone");
-    } else {
+    }
+    if (container.classList.contains("doneBlockContainer")) {
         btnContainer.append(delBtn);
         itemBlock.classList.add("moveToDoneStyle");
         itemBlockMain.append(descr);

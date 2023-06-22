@@ -367,6 +367,15 @@ lengthModalBtn.addEventListener('click', () => {
     hideAddModal(lengthModalContainer);
 })
 
+if (savedDoneArr.length) {
+    for (let todo of savedDoneArr) {
+        doneArr.push(todo);
+        const itemContainer = renderTodoItem(doneBlockContainer, todo);
+        doneBtnFunction(itemContainer);
+        getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
+    }
+}
+
 if (savedTodoArr.length) {
     for (let todo of savedTodoArr) {
         todoArr.push(todo);
@@ -379,13 +388,5 @@ if (savedTodoArr.length) {
 if (savedProgressArr.length) {
     for (let todo of savedProgressArr) {
         handleProgressTodo(todo);
-    }
-}
-if (savedDoneArr.length) {
-    for (let todo of savedDoneArr) {
-        doneArr.push(todo);
-        const itemContainer = renderTodoItem(doneBlockContainer, todo);
-        doneBtnFunction(itemContainer);
-        getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
     }
 }

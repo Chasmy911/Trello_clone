@@ -46,14 +46,15 @@ export const renderTodoItem = (container, obj) => {
         editBtn.innerText = 'Edit';
         delBtn.innerText = 'Delete';
     }
-    else if (container.classList.contains('progressBlockContainer')) {
+    if (container.classList.contains('progressBlockContainer')) {
         btnContainer.append(editBtn, delBtn);
         itemBlockMain.append(descr);
         editBtn.innerText = 'BACK';
         delBtn.innerText = 'COMPLETE';
         editBtn.setAttribute('data-name', 'moveToTodo');
         delBtn.setAttribute('data-name', 'moveToDone');
-    } else {
+    } 
+    if (container.classList.contains('doneBlockContainer')){
         btnContainer.append(delBtn);
         itemBlock.classList.add('moveToDoneStyle');
         itemBlockMain.append(descr);
