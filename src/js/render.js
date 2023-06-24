@@ -15,11 +15,9 @@ export const renderTodoItem = (container, obj) => {
     container.append(itemBlock);
     itemBlock.append(itemBlockHeader, itemBlockMain, itemBlockFooter);
     itemBlockHeader.append(title, btnContainer);
-
     itemBlockFooter.append(user, time);
 
     title.innerText = obj.title;
-
     descr.innerText = obj.descr;
     user.innerText = obj.workUser;
     time.innerText = obj.data;
@@ -46,6 +44,7 @@ export const renderTodoItem = (container, obj) => {
         editBtn.innerText = 'Edit';
         delBtn.innerText = 'Delete';
     }
+
     if (container.classList.contains('progressBlockContainer')) {
         btnContainer.append(editBtn, delBtn);
         itemBlockMain.append(descr);
@@ -54,6 +53,7 @@ export const renderTodoItem = (container, obj) => {
         editBtn.setAttribute('data-name', 'moveToTodo');
         delBtn.setAttribute('data-name', 'moveToDone');
     } 
+    
     if (container.classList.contains('doneBlockContainer')){
         btnContainer.append(delBtn);
         itemBlock.classList.add('moveToDoneStyle');
@@ -63,8 +63,6 @@ export const renderTodoItem = (container, obj) => {
 
     return itemBlock
 }
-
-
 
 export const renderUser = (valueName, modal, editModal) => {
     const nameOpt = document.createElement('option');

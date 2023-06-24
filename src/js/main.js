@@ -1,5 +1,5 @@
 import { getTime } from "./headertime.js";
-import { showAddModal, hideAddModal, updateLocalStorage, getAmount, changeStyletoProgress} from "./helper.js";
+import { showAddModal, hideAddModal, updateLocalStorage, getAmount, changeStyletoProgress } from "./helper.js";
 import { createTodoItem } from "./createtodoitem.js";
 import { renderTodoItem, renderUser } from "./render.js";
 
@@ -62,7 +62,6 @@ doneBlockHeaderAmount.classList.add('doneBlockHeaderAmount');
 todoBlockHeaderTitle.innerText = 'TODO:';
 progressBlockHeaderTitle.innerText = 'IN PROGRESS:';
 doneBlockHeaderTitle.innerText = 'DONE:';
-
 todoBlockBtn.innerText = 'ADD TODO';
 doneBlockBtn.innerText = 'DELETE ALL';
 
@@ -80,7 +79,6 @@ modalDescr.setAttribute('placeholder', 'Description');
 
 modalUser.classList.add('select');
 
-
 const getUsers = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(res => res.json())
@@ -88,7 +86,6 @@ const getUsers = () => {
 };
 
 getUsers();
-
 
 modalBlockContainer.append(modalContainer);
 modalContainer.append(modalTitle, modalDescr, modalBtnContainer);
@@ -115,7 +112,6 @@ modalCancelBtn.addEventListener('click', () => {
     modalDescr.value = '';
     hideAddModal(modalContainer);
 });
-
 
 // edit modal
 
@@ -186,24 +182,21 @@ const handleProgressTodo = (todoItem) => {
     progressArr.push(todoItem);
     const progressitemContainer = renderTodoItem(progressBlockContainer, todoItem);
     changeStyletoProgress(progressitemContainer);
-
     progressBtnFunction(progressitemContainer);
     getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
     updateLocalStorage(todoArr, progressArr, doneArr);
-}
-
+};
 
 const todoBtnFunction = (itemBlock) => {
     itemBlock.addEventListener('click', (event) => {
         if (event.target.dataset.name === 'closeBtn') {
             const todoID = itemBlock.dataset.todoid;
             event.currentTarget.remove();
-
             todoArr = todoArr.filter(todo => +todoID !== +todo.id);
             getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
-    })
+    });
 
     itemBlock.addEventListener('click', (event) => {
         if (event.target.dataset.name === 'moveToProgress') {
@@ -211,7 +204,6 @@ const todoBtnFunction = (itemBlock) => {
                 showAddModal(lengthModalContainer);
                 hideAddModal(doneModalContainer);
                 hideAddModal(modalContainer);
-
             } else {
                 const todoID = itemBlock.dataset.todoid;
                 event.currentTarget.remove();
@@ -223,8 +215,7 @@ const todoBtnFunction = (itemBlock) => {
                 updateLocalStorage(todoArr, progressArr, doneArr);
             }
         }
-    })
-
+    });
 
     itemBlock.addEventListener('click', (event) => {
         if (event.target.dataset.name === 'editBtn') {
@@ -234,7 +225,7 @@ const todoBtnFunction = (itemBlock) => {
             showAddModal(editModalContainer);
             editModalTitle.value = todoItem.title;
             editModalDescr.value = todoItem.descr;
-            editModalUser.value= todoItem.workUser;
+            editModalUser.value = todoItem.workUser;
 
             editModalAddBtn.addEventListener('click', () => {
                 todoItem.title = editModalTitle.value;
@@ -246,8 +237,8 @@ const todoBtnFunction = (itemBlock) => {
                 location.reload()
             });
         }
-    })
-}
+    });
+};
 
 modalAddBtn.addEventListener('click', handleTodo);
 
@@ -258,7 +249,6 @@ const progressBtnFunction = (itemBlock) => {
             event.currentTarget.remove();
 
             let todoItem = progressArr.find(todo => +todoID === +todo.id);
-
             const itemContainer = renderTodoItem(todoBlockContainer, todoItem);
             todoBtnFunction(itemContainer);
             todoArr.push(todoItem);
@@ -267,7 +257,7 @@ const progressBtnFunction = (itemBlock) => {
             getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
-    })
+    });
 
     itemBlock.addEventListener('click', (event) => {
         if (event.target.dataset.name === 'moveToDone') {
@@ -275,7 +265,6 @@ const progressBtnFunction = (itemBlock) => {
 
             event.currentTarget.remove();
             let item = progressArr.find(todo => +todoID === +todo.id);
-
             const itemContainer = renderTodoItem(doneBlockContainer, item);
 
             doneArr.push(item);
@@ -285,8 +274,8 @@ const progressBtnFunction = (itemBlock) => {
             getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
-    })
-}
+    });
+};
 
 const doneBtnFunction = (itemBlock) => {
     itemBlock.addEventListener('click', (event) => {
@@ -298,8 +287,8 @@ const doneBtnFunction = (itemBlock) => {
             getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
             updateLocalStorage(todoArr, progressArr, doneArr);
         }
-    })
-}
+    });
+};
 
 // done modal btn 
 const doneModalContainer = document.createElement('div');
@@ -310,11 +299,11 @@ const doneModalNoBtn = document.createElement('button');
 
 modalBlockContainer.append(doneModalContainer);
 doneModalContainer.append(doneModalTitle, doneModalBtnContainer);
-
 doneModalBtnContainer.append(doneModalYesBtn, doneModalNoBtn);
 
 doneModalNoBtn.innerText = 'No';
 doneModalYesBtn.innerText = 'Yes';
+doneModalTitle.innerText = 'Are you sure?';
 
 doneModalContainer.classList.add('modalDoneContainer');
 doneModalTitle.classList.add('doneModalTitle');
@@ -322,15 +311,12 @@ doneModalBtnContainer.classList.add('doneModalBtnContainer');
 doneModalYesBtn.classList.add('doneModalYesBtn');
 doneModalNoBtn.classList.add('doneModalNoBtn');
 
-doneModalTitle.innerText = 'Are you sure?'
-
 doneBlockBtn.addEventListener('click', () => {
     if (!doneArr.length) { return }
 
     showAddModal(doneModalContainer);
     hideAddModal(modalContainer);
     hideAddModal(lengthModalContainer);
-
 
     doneModalNoBtn.addEventListener('click', () => {
         hideAddModal(doneModalContainer);
@@ -354,18 +340,16 @@ const lengthModalBtn = document.createElement('button');
 modalBlockContainer.append(lengthModalContainer);
 lengthModalContainer.append(lengthModalTitle, lengthModalBtn);
 
-lengthModalBtn.innerText = 'Ok';
-
 lengthModalContainer.classList.add('lengthModalContainer');
 lengthModalTitle.classList.add('lengthModalTitle');
-
 lengthModalBtn.classList.add('lengthModalBtn');
 
+lengthModalBtn.innerText = 'Ok';
 lengthModalTitle.innerText = 'You can\'t do more than 6 things at the same time'
 
 lengthModalBtn.addEventListener('click', () => {
     hideAddModal(lengthModalContainer);
-})
+});
 
 if (savedDoneArr.length) {
     for (let todo of savedDoneArr) {
@@ -374,7 +358,7 @@ if (savedDoneArr.length) {
         doneBtnFunction(itemContainer);
         getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
     }
-}
+};
 
 if (savedTodoArr.length) {
     for (let todo of savedTodoArr) {
@@ -384,7 +368,8 @@ if (savedTodoArr.length) {
         getAmount(todoBlockHeaderAmount, todoArr, progressBlockHeaderAmount, progressArr, doneBlockHeaderAmount, doneArr);
 
     }
-}
+};
+
 if (savedProgressArr.length) {
     for (let todo of savedProgressArr) {
         handleProgressTodo(todo);
