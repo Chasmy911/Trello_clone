@@ -820,12 +820,12 @@ doneModalContainer.append(doneModalTitle, doneModalBtnContainer);
 doneModalBtnContainer.append(doneModalYesBtn, doneModalNoBtn);
 doneModalNoBtn.innerText = "No";
 doneModalYesBtn.innerText = "Yes";
+doneModalTitle.innerText = "Are you sure?";
 doneModalContainer.classList.add("modalDoneContainer");
 doneModalTitle.classList.add("doneModalTitle");
 doneModalBtnContainer.classList.add("doneModalBtnContainer");
 doneModalYesBtn.classList.add("doneModalYesBtn");
 doneModalNoBtn.classList.add("doneModalNoBtn");
-doneModalTitle.innerText = "Are you sure?";
 doneBlockBtn.addEventListener("click", ()=>{
     if (!doneArr.length) return;
     (0, _helperJs.showAddModal)(doneModalContainer);
@@ -848,10 +848,10 @@ const lengthModalTitle = document.createElement("div");
 const lengthModalBtn = document.createElement("button");
 modalBlockContainer.append(lengthModalContainer);
 lengthModalContainer.append(lengthModalTitle, lengthModalBtn);
-lengthModalBtn.innerText = "Ok";
 lengthModalContainer.classList.add("lengthModalContainer");
 lengthModalTitle.classList.add("lengthModalTitle");
 lengthModalBtn.classList.add("lengthModalBtn");
+lengthModalBtn.innerText = "Ok";
 lengthModalTitle.innerText = "You can't do more than 6 things at the same time";
 lengthModalBtn.addEventListener("click", ()=>{
     (0, _helperJs.hideAddModal)(lengthModalContainer);
